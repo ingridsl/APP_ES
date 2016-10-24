@@ -21,21 +21,35 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:maxWidth="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo1"
             android:id="@+id/imageView"
             android:layout_gravity="center_horizontal" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Entrar"
+            android:text="  Entrar  "
             android:id="@+id/button"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@android:color/holo_blue_light" />
 
         <ImageButton
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:src="@drawable/facebook-login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="90dp"
+            android:maxWidth="90dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/facebook_login"
             android:id="@+id/imageButton"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+
+
+            android:baselineAlignBottom="false" />
+
     </LinearLayout>
 </RelativeLayout>

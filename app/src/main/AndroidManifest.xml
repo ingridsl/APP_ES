@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TurorialActivity" />
-        <activity android:name=".MenuPrincipalActivity"></activity>
+        <activity android:name=".MenuPrincipalActivity" />
+        <activity android:name=".TipoActivity"></activity>
     </application>
 
 </manifest>

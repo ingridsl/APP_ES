@@ -9,28 +9,77 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ingrid.myapplication.MenuPrincipalActivity">
 
-    <GridLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="97dp">
+        android:layout_marginTop="60dp">
 
-        <ImageButton
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:src="@drawable/inserir"
-            android:id="@+id/imageButton2"
-            android:layout_row="0"
-            android:layout_column="0" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="inserir"
-            android:id="@+id/textView3"
-            android:layout_row="1"
-            android:layout_column="0" />
-    </GridLayout>
+            android:drawableTop="@drawable/inserir"
+
+            android:id="@+id/inserir"
+            android:backgroundTint="@color/highlighted_text_material_dark" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text="calendario"
+            android:drawableTop="@drawable/calendario"
+
+            android:id="@+id/calendario"
+            android:backgroundTint="@color/highlighted_text_material_dark" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text="hoje"
+            android:drawableTop="@drawable/hoje"
+
+            android:id="@+id/hoje"
+            android:backgroundTint="@color/highlighted_text_material_dark" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text="tudo"
+            android:drawableTop="@drawable/tudo"
+
+            android:id="@+id/tudo"
+            android:backgroundTint="@color/highlighted_text_material_dark" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text="estatistica"
+            android:drawableTop="@drawable/estatistica"
+
+            android:id="@+id/estatistica"
+            android:backgroundTint="@color/highlighted_text_material_dark" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="wrap_content"
+            android:text="conf"
+            android:drawableTop="@drawable/conf"
+
+            android:id="@+id/conf"
+            android:backgroundTint="@color/highlighted_text_material_dark" />
+
+    </LinearLayout>
 </RelativeLayout>
