@@ -16,19 +16,19 @@ public class TipoActivity extends AppCompatActivity {
     }
     public void periodica(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, PeriodicaActivity.class);
+        Intent intent = new Intent(this, PeriodicoActivity.class);
         startActivity(intent);
 
     }
     public void unica(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, UnicaActivity.class);
+        Intent intent = new Intent(this, UnicoActivity.class);
         startActivity(intent);
 
     }
-    public void conf(View view) {
+    public void recorrente(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, ConfActivity.class);
+        Intent intent = new Intent(this, RecorrenteActivity.class);
         startActivity(intent);
 
     }

@@ -45,9 +45,9 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    public void recorrente(View view) {
+    public void conf(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, Recorrente.class);
+        Intent intent = new Intent(this, Conf.class);
         startActivity(intent);
 
     }
