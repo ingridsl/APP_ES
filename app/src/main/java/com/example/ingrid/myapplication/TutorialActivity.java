@@ -5,20 +5,22 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+
+public class TutorialActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        setContentView(R.layout.activity_tutorial);
 
-    /** Called when the user clicks the entrar button */
-    public void entrar(View view) {
+        Intent intent = getIntent();
+
+    }
+    /** Called when the user clicks the comecar button */
+    public void comecar(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, TutorialActivity.class);
+        Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
 
     }
-
 }

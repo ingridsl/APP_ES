@@ -32,7 +32,8 @@
             android:text="Periodica"
             android:id="@+id/periodica"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#d394ff" />
+            android:backgroundTint="#d394ff"
+            android:onClick="periodica"/>
 
         <Button
             android:layout_width="match_parent"
@@ -40,7 +41,8 @@
             android:text="unica"
             android:id="@+id/unica"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#d394ff" />
+            android:backgroundTint="#d394ff"
+            android:onClick="unica"/>
 
         <Button
             android:layout_width="match_parent"
@@ -48,6 +50,7 @@
             android:text="recorrente"
             android:id="@+id/recorrente"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#d394ff" />
+            android:backgroundTint="#d394ff"
+            android:onClick="recorrente"/>
     </LinearLayout>
 </RelativeLayout>

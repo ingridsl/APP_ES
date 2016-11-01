@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="inserir"
             android:drawableTop="@drawable/inserir"
+            android:onClick="inserir"
 
             android:id="@+id/inserir"
             android:backgroundTint="@color/highlighted_text_material_dark" />
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="calendario"
             android:drawableTop="@drawable/calendario"
+            android:onClick="calendario"
 
             android:id="@+id/calendario"
             android:backgroundTint="@color/highlighted_text_material_dark" />
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="hoje"
             android:drawableTop="@drawable/hoje"
+            android:onClick="hoje"
 
             android:id="@+id/hoje"
             android:backgroundTint="@color/highlighted_text_material_dark" />
@@ -59,6 +62,7 @@
             android:layout_height="wrap_content"
             android:text="tudo"
             android:drawableTop="@drawable/tudo"
+            android:onClick="tudo"
 
             android:id="@+id/tudo"
             android:backgroundTint="@color/highlighted_text_material_dark" />
@@ -68,6 +72,7 @@
             android:layout_height="wrap_content"
             android:text="estatistica"
             android:drawableTop="@drawable/estatistica"
+            android:onClick="estatistica"
 
             android:id="@+id/estatistica"
             android:backgroundTint="@color/highlighted_text_material_dark" />
@@ -77,6 +82,7 @@
             android:layout_height="wrap_content"
             android:text="conf"
             android:drawableTop="@drawable/conf"
+            android:onClick="conf"
 
             android:id="@+id/conf"
             android:backgroundTint="@color/highlighted_text_material_dark" />

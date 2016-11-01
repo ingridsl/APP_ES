@@ -35,7 +35,8 @@
             android:text="  Entrar  "
             android:id="@+id/button"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="@android:color/holo_blue_light" />
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:onClick="entrar"/>
 
         <ImageButton
             android:layout_width="match_parent"
