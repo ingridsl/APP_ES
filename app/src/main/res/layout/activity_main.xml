@@ -38,19 +38,5 @@
             android:backgroundTint="@android:color/holo_blue_light"
             android:onClick="entrar"/>
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:maxHeight="90dp"
-            android:maxWidth="90dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/facebook_login"
-            android:id="@+id/imageButton"
-            android:layout_gravity="center_horizontal"
-
-
-            android:baselineAlignBottom="false" />
-
     </LinearLayout>
 </RelativeLayout>
