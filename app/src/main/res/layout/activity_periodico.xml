@@ -66,25 +66,14 @@
             android:text="Adicionar anotações" />
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.48">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Frequencia"
-                android:id="@+id/textView6" />
-
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="59dp"
-                android:id="@+id/listView" />
-        </LinearLayout>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Frequencia"
+            android:drawableLeft ="@drawable/periodicidade"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/textView6" />
 
         <Button
             android:layout_width="match_parent"

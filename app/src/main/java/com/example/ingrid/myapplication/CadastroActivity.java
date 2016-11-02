@@ -1,30 +1,30 @@
 package com.example.ingrid.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.content.Intent;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        setContentView(R.layout.activity_cadastro);
 
-    /** Called when the user clicks the entrar button */
-    public void entrar(View view) {
+        Intent intent = getIntent();
+
+    }
+    public void salvar(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, TutorialActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
-    public void cadastrar(View view) {
+    public void cancelar(View view) {
         // Do something in response to button
-        Intent intent = new Intent(this, CadastroActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
-
 }

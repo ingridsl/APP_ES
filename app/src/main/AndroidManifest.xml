@@ -19,7 +19,13 @@
         <activity android:name=".TipoActivity" />
         <activity android:name=".UnicoActivity" />
         <activity android:name=".RecorrenteActivity" />
-        <activity android:name=".PeriodicoActivity"></activity>
+        <activity android:name=".PeriodicoActivity" />
+        <activity android:name=".ConfActivity" />
+        <activity android:name=".HojeActivity" />
+        <activity android:name=".TudoActivity" />
+        <activity android:name=".CadastroActivity" />
+        <activity android:name=".EstatisticaActivity" />
+        <activity android:name=".CalendarioActivity"></activity>
     </application>
 
 </manifest>
