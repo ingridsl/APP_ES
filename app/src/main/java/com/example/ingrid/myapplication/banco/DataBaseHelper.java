@@ -7,6 +7,7 @@ import android.util.Log;
 import android.database.Cursor;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -196,7 +197,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdateRecorrente(recorrente); //////WTF
+            long userId = addOrUpdateUser(recorrente.getUserID()); //////WTF
 
             ContentValues values = new ContentValues(); //valores que não são PK
             values.put(KEY_RECORRENTE_NOME, recorrente.getNome());
@@ -235,7 +236,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdateUnico(unico);
+            long userId = addOrUpdateUser(unico.getUserID());
 
             ContentValues values = new ContentValues(); //valores que não são PK
             values.put(KEY_UNICO_ID, userId);
@@ -274,7 +275,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdatePeriodico(periodico);
+            long userId = addOrUpdateUser(periodico.getUserID());
 
             ContentValues values = new ContentValues(); //valores que não são PK
             values.put(KEY_PERIODICO_NOME, periodico.getNome());
@@ -366,22 +367,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     Usuario newUser = new Usuario();
-                    newUser.login = cursor.getString(cursor.getColumnIndex(KEY_LOGIN));
-                    newUser.senha = cursor.getString(cursor.getColumnIndex(KEY_SENHA));
+                    newUser.setLogin(cursor.getString(cursor.getColumnIndex(KEY_LOGIN)));
+                    newUser.setSenha(cursor.getString(cursor.getColumnIndex(KEY_SENHA)));
 
                     Recorrente newRecorrente = new Recorrente();
-                    newRecorrente.nome = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_NOME));
-                    newRecorrente.anotacao = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_ANOTACAO));
-                    newRecorrente.local = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_LOCAL));
-                    newRecorrente.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_HORA_FINAL));
-                    newRecorrente.progressao = cursor.getFloat (KEY_RECORRENTE_PROGRESSAO);
-                    newRecorrente.totalItens = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_TOTAL_ITENS));
-                    newRecorrente.itensFeitos = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_ITENS_FEITOS));
-                    newRecorrente.horasDia = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_HORAS_DIA));
-                    newRecorrente.prioridade = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_PRIORIDADE));
-                    newRecorrente.faltas = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_FALTAS));
-                    newRecorrente.dataFinal= cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_DATA_FINAL));
-                    newRecorrente.userID = newUser;
+                    newRecorrente.setNome(cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_NOME)));
+                    newRecorrente.setAnotacao(cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_ANOTACAO)));
+                    newRecorrente.setLocal(cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_LOCAL)));
+
+                    SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+                    Date HoraFinal = null;
+                    try {
+                        if (cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_HORA_FINAL))!=null)
+                            HoraFinal= formatTime.parse(cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_HORA_FINAL)));
+                    } catch (ParseException e){
+                        HoraFinal = null;
+                    }
+                    newRecorrente.setHoraFinal((java.sql.Time)HoraFinal);
+
+                    newRecorrente.setProgressao(cursor.getFloat(cursor.getColumnIndex(KEY_RECORRENTE_PROGRESSAO)));
+                    newRecorrente.setTotalItens(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_TOTAL_ITENS)));
+                    newRecorrente.setItensFeitos (cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_ITENS_FEITOS)));
+                    newRecorrente.setHorasDia(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_HORAS_DIA)));
+                    newRecorrente.setPrioridade(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_PRIORIDADE));
+                    newRecorrente.setFaltas(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_FALTAS))));
+                    newRecorrente.setDataFinal(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_DATA_FINAL)));
+                    newRecorrente.setUserID(newUser);
                     recorrentes.add(newRecorrente);
                 } while(cursor.moveToNext());
             }
@@ -416,18 +427,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     Usuario newUser = new Usuario();
-                    newUser.login = cursor.getString(cursor.getColumnIndex(KEY_LOGIN));
-                    newUser.senha = cursor.getString(cursor.getColumnIndex(KEY_SENHA));
+                    newUser.setLogin(cursor.getString(cursor.getColumnIndex(KEY_LOGIN)));
+                    newUser.setSenha (cursor.getString(cursor.getColumnIndex(KEY_SENHA)));
 
                     Unico newUnico = new Unico();
-                    newUnico.nome = cursor.getString(cursor.getColumnIndex(KEY_UNICO_NOME));
-                    newUnico.anotacao = cursor.getString(cursor.getColumnIndex(KEY_UNICO_ANOTACAO));
-                    newUnico.local = cursor.getString(cursor.getColumnIndex(KEY_UNICO_LOCAL));
-                    newUnico.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_FINAL));
-                    newUnico.horaInicial = cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_INICIAL));
-                    newUnico.prioridade = cursor.getInt (cursor.getColumnIndex(KEY_UNICO_PRIORIDADE));
-                    newUnico.data= cursor.getInt (cursor.getColumnIndex(KEY_UNICO_DATA));
-                    newUnico.userID = newUser;
+                    newUnico.setNome(cursor.getString(cursor.getColumnIndex(KEY_UNICO_NOME)));
+                    newUnico.setAnotacao (cursor.getString(cursor.getColumnIndex(KEY_UNICO_ANOTACAO)));
+                    newUnico.setLocal(cursor.getString(cursor.getColumnIndex(KEY_UNICO_LOCAL)));
+
+                    SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+                    Date HoraFinal = null;
+                    try {
+                        if (cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_FINAL))!=null)
+                            HoraFinal= formatTime.parse(cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_FINAL)));
+                    } catch (ParseException e){
+                        HoraFinal = null;
+                    }
+                    newUnico.setHoraFinal((java.sql.Time)HoraFinal);
+
+                    Date HoraInicial = null;
+                    try {
+                        if (cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_INICIAL))!=null)
+                            HoraInicial = formatTime.parse(cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_INICIAL)));
+                    } catch (ParseException e){
+                        HoraInicial = null;
+                    }
+                    newUnico.setHoraInicial ((java.sql.Time)HoraInicial);
+
+                    newUnico.setPrioridade(cursor.getInt (cursor.getColumnIndex(KEY_UNICO_PRIORIDADE)));
+
+                    SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date dataTeste = null;
+                    try {
+                        if (cursor.getString(cursor.getColumnIndex(KEY_UNICO_DATA))!=null)
+                            dataTeste = formatData.parse(cursor.getString(cursor.getColumnIndex(KEY_UNICO_DATA)));
+                    } catch (ParseException e){
+                        dataTeste = null;
+                    }
+                    newUnico.setData(dataTeste);
+                    newUnico.setUserID(newUser);
                     unicos.add(newUnico);
                 } while(cursor.moveToNext());
             }
@@ -464,20 +502,40 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     Usuario newUser = new Usuario();
-                    newUser.login = cursor.getString(cursor.getColumnIndex(KEY_LOGIN));
-                    newUser.senha = cursor.getString(cursor.getColumnIndex(KEY_SENHA));
+                    newUser.setLogin(cursor.getString(cursor.getColumnIndex(KEY_LOGIN)));
+                    newUser.setSenha(cursor.getString(cursor.getColumnIndex(KEY_SENHA)));
 
                     Periodico newPeriodico = new Periodico();
-                    newPeriodico.nome = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_NOME));
-                    newPeriodico.anotacao = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_ANOTACAO));
-                    newPeriodico.local = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_LOCAL));
-                    newPeriodico.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_FINAL));
-                    newPeriodico.horaInicial = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_INICIAL));
-                    newPeriodico.prioridade = cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_PRIORIDADE));
-                    newPeriodico.repeticao= cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_REPETICAO));
-                    newPeriodico.frequencia= cursor.getString (cursor.getColumnIndex(KEY_PERIODICO_FREQUENCIA));
-                    newPeriodico.faltas= cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_FALTAS));
-                    newPeriodico.userID = newUser;
+                    newPeriodico.setNome(cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_NOME)));
+                    newPeriodico.setAnotacao(cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_ANOTACAO)));
+                    newPeriodico.setLocal(cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_LOCAL)));
+
+                    SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+                    Date HoraFinal = null;
+                    try {
+                        if (cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_FINAL))!=null)
+                            HoraFinal= formatTime.parse(cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_FINAL)));
+                    } catch (ParseException e){
+                        HoraFinal = null;
+                    }
+                    newPeriodico.setHoraFinal((java.sql.Time)HoraFinal);
+
+                    Date HoraInicial = null;
+                    try {
+                        if (cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_INICIAL))!=null)
+                            HoraInicial = formatTime.parse(cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_INICIAL)));
+                    } catch (ParseException e){
+                        HoraInicial = null;
+                    }
+                    newPeriodico.setHoraInicial ((java.sql.Time)HoraInicial);
+
+
+
+                    newPeriodico.setPrioridade(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_PRIORIDADE)));
+                    newPeriodico.setRepeticao(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_REPETICAO)));
+                    newPeriodico.setFrequencia(cursor.getString (cursor.getColumnIndex(KEY_PERIODICO_FREQUENCIA)));
+                    newPeriodico.setFaltas(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_FALTAS)));
+                    newPeriodico.setUserID(newUser);
                     periodicos.add(newPeriodico);
 
                 } while(cursor.moveToNext());
