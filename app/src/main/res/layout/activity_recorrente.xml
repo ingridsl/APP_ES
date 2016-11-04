@@ -29,20 +29,20 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/editNome"
             android:layout_gravity="center_horizontal"
             android:text="Nome" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3"
+            android:id="@+id/editData"
             android:text="Data" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText4"
+            android:id="@+id/editHora"
             android:text="Hora" />
 
         <LinearLayout
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText5"
+                android:id="@+id/editHorasPre"
                 android:layout_weight="1"
                 android:text="horas previstas" />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
                 android:ems="10"
-                android:id="@+id/editText6"
+                android:id="@+id/editItensTot"
                 android:layout_weight="1"
                 android:text="itens no total" />
         </LinearLayout>
@@ -81,7 +81,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
+            android:id="@+id/editNotas"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:text="Adicionar anotações" />

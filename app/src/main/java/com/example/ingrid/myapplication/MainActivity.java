@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void entrar(View view) {
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
+        //pega dados de login digitados pelo usuário
+        String Login = editLogin.getText().toString();
+
+        //pega dados de senha digitados pelo usuário
+        String Senha = editSenha.getText().toString();
         startActivity(intent);
 
     }

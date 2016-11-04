@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class CadastroActivity extends AppCompatActivity {
+
     private EditText editLogin;
     private EditText editSenha;
     private EditText editConfSenha;
@@ -23,6 +24,16 @@ public class CadastroActivity extends AppCompatActivity {
     public void salvar(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, MainActivity.class);
+
+        //pega dados de login digitados pelo usuário
+        String Login = editLogin.getText().toString();
+
+        //pega dados de senha digitados pelo usuário
+        String Senha = editSenha.getText().toString();
+
+        //pega dados de senha repetida digitados pelo usuário para conferir
+        String ConfSenha = editConfSenha.getText().toString();
+
         startActivity(intent);
 
     }
