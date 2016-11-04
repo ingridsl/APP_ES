@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 
+
+import com.example.ingrid.myapplication.banco.*;
+
 public class MainActivity extends AppCompatActivity {
     private EditText editLogin;
     private EditText editSenha;

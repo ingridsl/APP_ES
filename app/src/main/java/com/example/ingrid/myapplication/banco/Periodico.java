@@ -6,6 +6,7 @@ import java.sql.Time;
  */
 public class Periodico {
     private int id;
+    private String nome;
     private String anotacao;
     private Time horaFinal, horaInicial;
     private int repeticao;
@@ -21,6 +22,14 @@ public class Periodico {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getAnotacao() {

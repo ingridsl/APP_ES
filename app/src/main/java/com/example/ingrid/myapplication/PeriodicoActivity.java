@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.ingrid.myapplication.banco.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class PeriodicoActivity extends AppCompatActivity {
 
 
@@ -39,6 +44,19 @@ public class PeriodicoActivity extends AppCompatActivity {
         String HoraIni = editHoraIni.getText().toString();
         String HoraFin = editHoraFin.getText().toString();
         String Notas = editNotas.getText().toString();
+
+        Periodico periodico = new Periodico();
+        periodico.setNome(Nome);
+        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+        periodico.setHoraFinal(formatTime.format(HoraIni));
+        periodico.setHoraFinal(formatTime.format(HoraFin));
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        periodico.setData(formatDate.format(Data));
+        periodico.setNome(Notas);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addRecorrente(recorrente);
+
+
         startActivity(intent);
 
     }

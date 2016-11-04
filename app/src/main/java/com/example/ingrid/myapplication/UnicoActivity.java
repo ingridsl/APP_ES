@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.ingrid.myapplication.banco.*;
+
 public class UnicoActivity extends AppCompatActivity {
     private EditText editNome;
     private EditText editData;
@@ -25,6 +27,10 @@ public class UnicoActivity extends AppCompatActivity {
         editHoraFin = (EditText) findViewById(R.id.editHoraFin);
         editNotas = (EditText) findViewById(R.id.editNotas);
 
+
+
+        DataBaseHelper mInstance = DataBaseHelper.getInstance().addUsuario(usuario);
+
         Intent intent = getIntent();
     }
     public void recorrente(View view) {
@@ -35,6 +41,16 @@ public class UnicoActivity extends AppCompatActivity {
         String HoraIni = editHoraIni.getText().toString();
         String HoraFin = editHoraFin.getText().toString();
         String Notas = editNotas.getText().toString();
+
+        Unico unico = new Unico();
+        unico.setNome(Nome);
+        unico.setHoraInicial(HoraIni);
+        unico.setHoraFinal(HoraFin);
+        unico.setData(Data);
+        unico.setNome(Notas);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addUnico(unico);
+
         startActivity(intent);
 
     }
@@ -46,6 +62,16 @@ public class UnicoActivity extends AppCompatActivity {
         String HoraIni = editHoraIni.getText().toString();
         String HoraFin = editHoraFin.getText().toString();
         String Notas = editNotas.getText().toString();
+
+        Unico unico = new Unico();
+        unico.setNome(Nome);
+        unico.setHoraInicial(HoraIni);
+        unico.setHoraFinal(HoraFin);
+        unico.setData(Data);
+        unico.setNome(Notas);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addUnico(unico);
+
         startActivity(intent);
 
     }

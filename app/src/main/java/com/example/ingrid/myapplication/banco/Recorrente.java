@@ -6,6 +6,7 @@ import java.util.Date;
  */
 public class Recorrente {
     private int id;
+    private String nome;
     private String anotacao, local;
     private Time horaFinal;
     private float progressao;
@@ -20,6 +21,14 @@ public class Recorrente {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getAnotacao() {

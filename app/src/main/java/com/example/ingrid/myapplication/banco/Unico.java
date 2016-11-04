@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class Unico {
     private int id;
+    private String nome;
     private String anotacao;
     private Time horaFinal, horaInicial;
     private Date data;
@@ -20,6 +21,14 @@ public class Unico {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getAnotacao() {

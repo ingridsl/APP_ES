@@ -40,6 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         // Recorrente Table Columns
         private static final String KEY_RECORRENTE_ID = "id";
+        private static final String KEY_RECORRENTE_NOME = "nome";
         private static final String KEY_RECORRENTE_ANOTACAO = "anotacao";
         private static final String KEY_RECORRENTE_HORA_FINAL = "horaFinal";
         private static final String KEY_RECORRENTE_PROGRESSAO = "progressao";
@@ -54,6 +55,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         //Unico Table Columns
         private static final String KEY_UNICO_ID = "id";
+        private static final String KEY_UNICO_NOME = "nome";
         private static final String KEY_UNICO_ANOTACAO = "anotacao";
         private static final String KEY_UNICO_HORA_FINAL = "horaFinal";
         private static final String KEY_UNICO_HORA_INICIAL = "horaInicial";
@@ -64,6 +66,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         //Periodico Table Columns
         private static final String KEY_PERIODICO_ID = "id";
+        private static final String KEY_PERIODICO_NOME = "nome";
         private static final String KEY_PERIODICO_ANOTACAO = "anotacao";
         private static final String KEY_PERIODICO_HORA_FINAL = "horaFinal";
         private static final String KEY_PERIODICO_HORA_INICIAL = "horaInicial";
@@ -100,6 +103,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String CREATE_TABLE_RECORRENTE = "CREATE TABLE " + TABLE_RECORRENTE +
                 "(" +
                 KEY_RECORRENTE_ID + " INTEGER PRIMARY KEY," +
+                KEY_RECORRENTE_NOME + " TEXT" +
                 KEY_RECORRENTE_ANOTACAO + " TEXT" +
                 KEY_RECORRENTE_HORA_FINAL + "TIME" +
                 KEY_RECORRENTE_PROGRESSAO + "FLOAT" +
@@ -117,6 +121,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String CREATE_TABLE_UNICO = "CREATE TABLE " + TABLE_RECORRENTE +
                 "(" +
                 KEY_UNICO_ID + " INTEGER PRIMARY KEY," +
+                KEY_UNICO_NOME + " TEXT" +
                 KEY_UNICO_ANOTACAO + " TEXT" +
                 KEY_UNICO_HORA_FINAL + "TIMESTAMP" +
                 KEY_UNICO_HORA_INICIAL + "TIMESTAMP" +
@@ -130,6 +135,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String CREATE_TABLE_PERIODICO = "CREATE TABLE " + TABLE_RECORRENTE +
                 "(" +
                 KEY_PERIODICO_ID + " INTEGER PRIMARY KEY," +
+                KEY_PERIODICO_NOME + " TEXT" +
                 KEY_PERIODICO_ANOTACAO + " TEXT" +
                 KEY_PERIODICO_HORA_FINAL  + "TIMESTAMP" +
                 KEY_PERIODICO_HORA_INICIAL + "TIMESTAMP" +
@@ -193,6 +199,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             long userId = addOrUpdateRecorrente(recorrente); //////WTF
 
             ContentValues values = new ContentValues(); //valores que não são PK
+            values.put(KEY_RECORRENTE_NOME, recorrente.getNome());
             values.put(KEY_RECORRENTE_ANOTACAO, recorrente.getAnotacao());
             values.put(KEY_RECORRENTE_ID, userId);
             SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
@@ -211,7 +218,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.insertOrThrow(TABLE_RECORRENTE, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            Log.d(TAG, "Error while trying to add post to database");
+            Log.d(TAG, "Error while trying to add in database");
         } finally {
             db.endTransaction();
         }
@@ -232,6 +239,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             ContentValues values = new ContentValues(); //valores que não são PK
             values.put(KEY_UNICO_ID, userId);
+            values.put(KEY_UNICO_NOME, unico.getNome());
             values.put(KEY_UNICO_ANOTACAO, unico.getAnotacao());
             SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
             values.put(KEY_UNICO_HORA_FINAL, formatTime.format(unico.getHoraFinal()));
@@ -246,7 +254,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.insertOrThrow(TABLE_UNICO, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            Log.d(TAG, "Error while trying to add post to database");
+            Log.d(TAG, "Error while trying to add in database");
         } finally {
             db.endTransaction();
         }
@@ -269,6 +277,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             long userId = addOrUpdatePeriodico(periodico);
 
             ContentValues values = new ContentValues(); //valores que não são PK
+            values.put(KEY_PERIODICO_NOME, periodico.getNome());
             values.put(KEY_PERIODICO_ANOTACAO, periodico.getAnotacao());
             values.put(KEY_PERIODICO_ID, userId);
             SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
@@ -285,7 +294,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.insertOrThrow(TABLE_PERIODICO, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) {
-            Log.d(TAG, "Error while trying to add post to database");
+            Log.d(TAG, "Error while trying to add in database");
         } finally {
             db.endTransaction();
         }
@@ -361,6 +370,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     newUser.senha = cursor.getString(cursor.getColumnIndex(KEY_SENHA));
 
                     Recorrente newRecorrente = new Recorrente();
+                    newRecorrente.nome = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_NOME));
                     newRecorrente.anotacao = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_ANOTACAO));
                     newRecorrente.local = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_LOCAL));
                     newRecorrente.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_HORA_FINAL));
@@ -376,7 +386,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 } while(cursor.moveToNext());
             }
         } catch (Exception e) {
-            Log.d(TAG, "Error while trying to get posts from database");
+            Log.d(TAG, "Error while trying to get from database");
         } finally {
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
@@ -410,6 +420,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     newUser.senha = cursor.getString(cursor.getColumnIndex(KEY_SENHA));
 
                     Unico newUnico = new Unico();
+                    newUnico.nome = cursor.getString(cursor.getColumnIndex(KEY_UNICO_NOME));
                     newUnico.anotacao = cursor.getString(cursor.getColumnIndex(KEY_UNICO_ANOTACAO));
                     newUnico.local = cursor.getString(cursor.getColumnIndex(KEY_UNICO_LOCAL));
                     newUnico.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_UNICO_HORA_FINAL));
@@ -421,7 +432,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 } while(cursor.moveToNext());
             }
         } catch (Exception e) {
-            Log.d(TAG, "Error while trying to get posts from database");
+            Log.d(TAG, "Error while trying to get from database");
         } finally {
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
@@ -456,7 +467,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     newUser.login = cursor.getString(cursor.getColumnIndex(KEY_LOGIN));
                     newUser.senha = cursor.getString(cursor.getColumnIndex(KEY_SENHA));
 
-                    Periodico newPeriodico = new Unico();
+                    Periodico newPeriodico = new Periodico();
+                    newPeriodico.nome = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_NOME));
                     newPeriodico.anotacao = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_ANOTACAO));
                     newPeriodico.local = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_LOCAL));
                     newPeriodico.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_PERIODICO_HORA_FINAL));
@@ -471,7 +483,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 } while(cursor.moveToNext());
             }
         } catch (Exception e) {
-            Log.d(TAG, "Error while trying to get posts from database");
+            Log.d(TAG, "Error while trying to get from database");
         } finally {
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();

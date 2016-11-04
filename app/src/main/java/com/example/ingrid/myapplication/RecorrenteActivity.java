@@ -6,6 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.ingrid.myapplication.banco.*;
+
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.Locale;
+
 public class RecorrenteActivity extends AppCompatActivity {
 
     private EditText editNome;
@@ -42,6 +49,18 @@ public class RecorrenteActivity extends AppCompatActivity {
         String Notas = editNotas.getText().toString();
         String HorasPre = editHorasPre.getText().toString();
         String ItensTot = editItensTot.getText().toString();
+
+        Recorrente recorrente = new Recorrente();
+        recorrente.setNome(Nome);
+        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+        recorrente.setHoraFinal(formatTime.format(Hora));
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        recorrente.setDataFinal(formatDate.format(Data));
+        recorrente.setHorasDia(Integer.parseInt(HorasPre));
+        recorrente.setTotalItens(Integer.parseInt(ItensTot));
+        recorrente.setNome(Notas);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addRecorrente(recorrente);
         startActivity(intent);
 
     }

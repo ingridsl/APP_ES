@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.ingrid.myapplication.banco.*;
+
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText editLogin;
@@ -27,12 +29,16 @@ public class CadastroActivity extends AppCompatActivity {
 
         //pega dados de login digitados pelo usuário
         String Login = editLogin.getText().toString();
-
         //pega dados de senha digitados pelo usuário
         String Senha = editSenha.getText().toString();
-
         //pega dados de senha repetida digitados pelo usuário para conferir
         String ConfSenha = editConfSenha.getText().toString();
+
+        Usuario usuario = new Usuario();
+        usuario.setLogin(Login);
+        usuario.setSenha(Senha);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addUsuario(usuario);
 
         startActivity(intent);
 
