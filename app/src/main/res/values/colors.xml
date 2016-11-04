@@ -6,6 +6,7 @@
     <color name="colorPrimaryLight">#2984a5</color>
     <color name="colorAccentLight">#3b84d3</color>
     <color name="disabled">#bdbdbd</color>
+    <color name="back">#4c5054</color>
 
     <!-- Outras Cores -->
     <color name="pink">#FF4081</color>
