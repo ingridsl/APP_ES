@@ -1,4 +1,4 @@
-package com.example.ingrid.myapplication;
+package com.example.ingrid.myapplication.banco;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,9 +7,11 @@ import android.util.Log;
 import android.database.Cursor;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -99,7 +101,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "(" +
                 KEY_RECORRENTE_ID + " INTEGER PRIMARY KEY," +
                 KEY_RECORRENTE_ANOTACAO + " TEXT" +
-                KEY_RECORRENTE_HORA_FINAL + "TIMESTAMP" +
+                KEY_RECORRENTE_HORA_FINAL + "TIME" +
                 KEY_RECORRENTE_PROGRESSAO + "FLOAT" +
                 KEY_RECORRENTE_ITENS_FEITOS + "INTEGER" +
                 KEY_RECORRENTE_TOTAL_ITENS + "INTEGER" +
@@ -161,11 +163,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdateUser(Usuario.user);
+            long userId = addOrUpdateUser(usuario);
 
             ContentValues values = new ContentValues(); //valores que não são PK
-            values.put(KEY_LOGIN, usuario.login);
-            values.put(KEY_SENHA , usuario.senha);
+            values.put(KEY_USER_ID, userId);
+            values.put(KEY_LOGIN, usuario.getLogin());
+            values.put(KEY_SENHA , usuario.getSenha());
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
             db.insertOrThrow(TABLE_USUARIO, null, values);
@@ -187,22 +190,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdateUser(recorrente.userID );
+            long userId = addOrUpdateRecorrente(recorrente); //////WTF
 
             ContentValues values = new ContentValues(); //valores que não são PK
-            values.put(KEY_RECORRENTE_ANOTACAO, recorrente.anotacao);
-            values.put(KEY_RECORRENTE_HORA_FINAL, recorrente.horaFinal);
-            values.put(KEY_RECORRENTE_PROGRESSAO, recorrente.progressao);
-            values.put(KEY_RECORRENTE_ITENS_FEITOS, recorrente.itensFeitos);
-            values.put(KEY_RECORRENTE_TOTAL_ITENS, recorrente.totalItens);
-            values.put(KEY_RECORRENTE_HORAS_DIA, recorrente.horasDia);
-            values.put(KEY_RECORRENTE_DATA_FINAL, recorrente.dataFinal);
-            values.put(KEY_RECORRENTE_PRIORIDADE, recorrente.prioridade);
-            values.put(KEY_RECORRENTE_FALTAS, recorrente.faltas);
-            values.put(KEY_RECORRENTE_LOCAL, recorrente.local);
-            values.put(KEY_RECORRENTE_USER_ID_FK, userId);
+            values.put(KEY_RECORRENTE_ANOTACAO, recorrente.getAnotacao());
+            values.put(KEY_RECORRENTE_ID, userId);
+            SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+            values.put(KEY_RECORRENTE_HORA_FINAL, formatTime.format(recorrente.getHoraFinal()));
+            values.put(KEY_RECORRENTE_PROGRESSAO, recorrente.getProgressao());
+            values.put(KEY_RECORRENTE_ITENS_FEITOS, recorrente.getItensFeitos());
+            values.put(KEY_RECORRENTE_TOTAL_ITENS, recorrente.getTotalItens());
+            values.put(KEY_RECORRENTE_HORAS_DIA, recorrente.getHorasDia());
+            SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+            values.put(KEY_RECORRENTE_DATA_FINAL, formatDate.format(recorrente.getDataFinal()));
+            values.put(KEY_RECORRENTE_PRIORIDADE, recorrente.getPrioridade());
+            values.put(KEY_RECORRENTE_FALTAS, recorrente.getFaltas());
+            values.put(KEY_RECORRENTE_LOCAL, recorrente.getLocal());
+            //!!!!! tem que pegar da classe criada values.put(KEY_RECORRENTE_USER_ID_FK, recorrente.get);
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
-            db.insertOrThrow(TABLE_USUARIO, null, values);
+            db.insertOrThrow(TABLE_RECORRENTE, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             Log.d(TAG, "Error while trying to add post to database");
@@ -222,19 +228,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdateUser(unico.userID );
+            long userId = addOrUpdateUnico(unico);
 
             ContentValues values = new ContentValues(); //valores que não são PK
-            values.put(KEY_UNICO_ANOTACAO, unico.anotacao);
-            values.put(KEY_UNICO_HORA_FINAL,unico.horaFinal);
-            values.put(KEY_UNICO_HORA_INICIAL, unico.horaInicial);
-            values.put(KEY_UNICO_DATA, unico.data);
-            values.put(KEY_UNICO_LOCAL, unico.local);
-            values.put(KEY_UNICO_PRIORIDADE, unico.prioridade);
-            values.put(KEY_RECORRENTE_USER_ID_FK, userId);
+            values.put(KEY_UNICO_ID, userId);
+            values.put(KEY_UNICO_ANOTACAO, unico.getAnotacao());
+            SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+            values.put(KEY_UNICO_HORA_FINAL, formatTime.format(unico.getHoraFinal()));
+            values.put(KEY_UNICO_HORA_INICIAL, formatTime.format(unico.getHoraInicial()));
+            SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+            values.put(KEY_UNICO_DATA, formatDate.format(unico.getData()));
+            values.put(KEY_UNICO_LOCAL, unico.getLocal());
+            values.put(KEY_UNICO_PRIORIDADE, unico.getPrioridade());
+            //!!!!values.put(KEY_RECORRENTE_USER_ID_FK, userId);
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
-            db.insertOrThrow(TABLE_USUARIO, null, values);
+            db.insertOrThrow(TABLE_UNICO, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             Log.d(TAG, "Error while trying to add post to database");
@@ -257,21 +266,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
-            long userId = addOrUpdateUser(periodico.userID );
+            long userId = addOrUpdatePeriodico(periodico);
 
             ContentValues values = new ContentValues(); //valores que não são PK
-            values.put(KEY_PERIODICO_ANOTACAO, periodico.anotacao);
-            values.put(KEY_PERIODICO_HORA_FINAL,periodico.horaFinal);
-            values.put(KEY_PERIODICO_HORA_INICIAL, periodico.horaInicial);
-            values.put(KEY_PERIODICO_LOCAL, periodico.local);
-            values.put(KEY_PERIODICO_PRIORIDADE, periodico.prioridade);
-            values.put(KEY_PERIODICO_REPETICAO, periodico.repeticao);
-            values.put(KEY_PERIODICO_FREQUENCIA, periodico.frequencia);
-            values.put(KEY_PERIODICO_FALTAS, periodico.faltas);
-            values.put(KEY_RECORRENTE_USER_ID_FK, userId);
+            values.put(KEY_PERIODICO_ANOTACAO, periodico.getAnotacao());
+            values.put(KEY_PERIODICO_ID, userId);
+            SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+            values.put(KEY_PERIODICO_HORA_FINAL, formatTime.format(periodico.getHoraFinal()));
+            values.put(KEY_PERIODICO_HORA_INICIAL, formatTime.format(periodico.getHoraInicial()));
+            values.put(KEY_PERIODICO_LOCAL, periodico.getLocal());
+            values.put(KEY_PERIODICO_PRIORIDADE, periodico.getPrioridade());
+            values.put(KEY_PERIODICO_REPETICAO, periodico.getRepeticao());
+            values.put(KEY_PERIODICO_FREQUENCIA, periodico.getFrequencia());
+            values.put(KEY_PERIODICO_FALTAS, periodico.getFaltas());
+            //!!!!!values.put(KEY_RECORRENTE_USER_ID_FK, userId);
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
-            db.insertOrThrow(TABLE_USUARIO, null, values);
+            db.insertOrThrow(TABLE_PERIODICO, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             Log.d(TAG, "Error while trying to add post to database");
@@ -280,15 +291,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
-
-    // Insert or update a user in the database
-    // Since SQLite doesn't support "upsert" we need to fall back on an attempt to UPDATE (in case the
-    // user already exists) optionally followed by an INSERT (in case the user does not already exist).
-    // Unfortunately, there is a bug with the insertOnConflict method
-    // (https://code.google.com/p/android/issues/detail?id=13045) so we need to fall back to the more
-    // verbose option of querying for the user's primary key if we did an update.
-    public long addOrUpdateUser(Usuario user) {
+    private long addOrUpdateUser(Usuario user) {
         // The database connection is cached so it's not expensive to call getWriteableDatabase() multiple times.
         SQLiteDatabase db = getWritableDatabase();
         long userId = -1;
@@ -296,19 +299,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             ContentValues values = new ContentValues();
-            values.put(KEY_LOGIN, user.login);
-            values.put(KEY_SENHA, user.senha);
+            values.put(KEY_LOGIN, user.getLogin());
+            values.put(KEY_SENHA, user.getSenha());
 
             // First try to update the user in case the user already exists in the database
             // This assumes userNames are unique
-            int rows = db.update(TABLE_USUARIO, values, KEY_LOGIN + "= ?", new String[]{user.login});
+            int rows = db.update(TABLE_USUARIO, values, KEY_LOGIN + "= ?", new String[]{user.getLogin()});
 
             // Check if update succeeded
             if (rows == 1) {
                 // Get the primary key of the user we just updated
                 String usersSelectQuery = String.format("SELECT %s FROM %s WHERE %s = ?",
                         KEY_USER_ID, TABLE_USUARIO, KEY_LOGIN);
-                Cursor cursor = db.rawQuery(usersSelectQuery, new String[]{String.valueOf(user.login)});
+                Cursor cursor = db.rawQuery(usersSelectQuery, new String[]{String.valueOf(user.getLogin())});
                 try {
                     if (cursor.moveToFirst()) {
                         userId = cursor.getInt(0);
@@ -361,12 +364,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     newRecorrente.anotacao = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_ANOTACAO));
                     newRecorrente.local = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_LOCAL));
                     newRecorrente.horaFinal = cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_HORA_FINAL));
-                    newRecorrente.progressao = cursor.getFloat(KEY_RECORRENTE_PROGRESSAO);
+                    newRecorrente.progressao = cursor.getFloat (KEY_RECORRENTE_PROGRESSAO);
                     newRecorrente.totalItens = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_TOTAL_ITENS));
                     newRecorrente.itensFeitos = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_ITENS_FEITOS));
                     newRecorrente.horasDia = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_HORAS_DIA));
                     newRecorrente.prioridade = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_PRIORIDADE));
-                    newRecorrente.faltas = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_FALTAS);
+                    newRecorrente.faltas = cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_FALTAS));
                     newRecorrente.dataFinal= cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_DATA_FINAL));
                     newRecorrente.userID = newUser;
                     recorrentes.add(newRecorrente);

@@ -13,15 +13,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /** Called when the user clicks the entrar button */
     public void entrar(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, TutorialActivity.class);
+        Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
 
     }
+
     public void cadastrar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, CadastroActivity.class);
         startActivity(intent);
 
