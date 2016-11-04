@@ -8,6 +8,11 @@ import android.widget.EditText;
 
 import com.example.ingrid.myapplication.banco.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class UnicoActivity extends AppCompatActivity {
     private EditText editNome;
     private EditText editData;
@@ -28,9 +33,6 @@ public class UnicoActivity extends AppCompatActivity {
         editNotas = (EditText) findViewById(R.id.editNotas);
 
 
-
-        DataBaseHelper mInstance = DataBaseHelper.getInstance().addUsuario(usuario);
-
         Intent intent = getIntent();
     }
     public void recorrente(View view) {
@@ -44,9 +46,30 @@ public class UnicoActivity extends AppCompatActivity {
 
         Unico unico = new Unico();
         unico.setNome(Nome);
-        unico.setHoraInicial(HoraIni);
-        unico.setHoraFinal(HoraFin);
-        unico.setData(Data);
+        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+        Date HoraInicial = null;
+        try {
+            if (HoraIni!=null) HoraInicial = formatTime.parse(HoraIni);
+        } catch (ParseException e){
+            HoraInicial = null;
+        }
+        unico.setHoraInicial((java.sql.Time)HoraInicial);
+        Date HoraFinal = null;
+        try {
+            if (HoraFin!=null) HoraFinal = formatTime.parse(HoraFin);
+        } catch (ParseException e){
+            HoraFinal = null;
+        }
+        unico.setHoraFinal ((java.sql.Time)HoraFinal );
+
+        SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Date dataTeste = null;
+        try {
+            if (Data!=null) dataTeste = formatData.parse(Data);
+        } catch (ParseException e){
+            dataTeste = null;
+        }
+        unico.setData(dataTeste);
         unico.setNome(Notas);
 
         DataBaseHelper.getInstance(this.getApplicationContext()).addUnico(unico);
@@ -65,9 +88,30 @@ public class UnicoActivity extends AppCompatActivity {
 
         Unico unico = new Unico();
         unico.setNome(Nome);
-        unico.setHoraInicial(HoraIni);
-        unico.setHoraFinal(HoraFin);
-        unico.setData(Data);
+        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+        Date HoraInicial = null;
+        try {
+            if (HoraIni!=null) HoraInicial = formatTime.parse(HoraIni);
+        } catch (ParseException e){
+            HoraInicial = null;
+        }
+        unico.setHoraInicial((java.sql.Time)HoraInicial);
+        Date HoraFinal = null;
+        try {
+            if (HoraFin!=null) HoraFinal = formatTime.parse(HoraFin);
+        } catch (ParseException e){
+            HoraFinal = null;
+        }
+        unico.setHoraFinal ((java.sql.Time)HoraFinal );
+
+        SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Date dataTeste = null;
+        try {
+            if (Data!=null) dataTeste = formatData.parse(Data);
+        } catch (ParseException e){
+            dataTeste = null;
+        }
+        unico.setData(dataTeste);
         unico.setNome(Notas);
 
         DataBaseHelper.getInstance(this.getApplicationContext()).addUnico(unico);

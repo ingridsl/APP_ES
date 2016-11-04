@@ -53,9 +53,25 @@ public class RecorrenteActivity extends AppCompatActivity {
         Recorrente recorrente = new Recorrente();
         recorrente.setNome(Nome);
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
-        recorrente.setHoraFinal(formatTime.format(Hora));
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        recorrente.setDataFinal(formatDate.format(Data));
+        Date HoraTeste = null;
+        try {
+            if (Hora!=null) HoraTeste = formatTime.parse(Hora);
+        } catch (ParseException e){
+            HoraTeste = null;
+        }
+        recorrente.setHoraFinal((java.sql.Time)HoraTeste);
+
+        SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Date dataTeste = null;
+        try {
+            if (Data!=null) dataTeste = formatData.parse(Data);
+        } catch (ParseException e){
+            dataTeste = null;
+        }
+        recorrente.setDataFinal(dataTeste);
+
+
+
         recorrente.setHorasDia(Integer.parseInt(HorasPre));
         recorrente.setTotalItens(Integer.parseInt(ItensTot));
         recorrente.setNome(Notas);

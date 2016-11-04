@@ -8,7 +8,9 @@ import android.widget.EditText;
 
 import com.example.ingrid.myapplication.banco.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class PeriodicoActivity extends AppCompatActivity {
@@ -47,14 +49,36 @@ public class PeriodicoActivity extends AppCompatActivity {
 
         Periodico periodico = new Periodico();
         periodico.setNome(Nome);
+
+
+        SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        Date dataTeste = null;
+        try {
+                if (Data!=null) dataTeste = formatData.parse(Data);
+        } catch (ParseException e){
+            dataTeste = null;
+        }
+        periodico.setData(dataTeste);
+
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
-        periodico.setHoraFinal(formatTime.format(HoraIni));
-        periodico.setHoraFinal(formatTime.format(HoraFin));
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        periodico.setData(formatDate.format(Data));
+        Date HoraInicial = null;
+        try {
+            if (HoraIni!=null) HoraInicial = formatTime.parse(HoraIni);
+        } catch (ParseException e){
+            HoraInicial = null;
+        }
+        periodico.setHoraInicial((java.sql.Time)HoraInicial);
+        Date HoraFinal = null;
+        try {
+            if (HoraFin!=null) HoraFinal = formatTime.parse(HoraFin);
+        } catch (ParseException e){
+            HoraFinal = null;
+        }
+        periodico.setHoraFinal ((java.sql.Time)HoraFinal );
+
         periodico.setNome(Notas);
 
-        DataBaseHelper.getInstance(this.getApplicationContext()).addRecorrente(recorrente);
+        DataBaseHelper.getInstance(this.getApplicationContext()).addPeriodico(periodico);
 
 
         startActivity(intent);
