@@ -1,69 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ingrid.myapplication.CadastroActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_geral"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_text"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="Cadastro"/>
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cadastro"
-            android:id="@+id/textView14"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Login/Email"
-            android:id="@+id/textView15" />
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_below="@id/toolbar_geral"
+        android:background="#3a3d3f">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText9" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Senha"
-            android:id="@+id/textView16" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editText10" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Repita a senha"
-            android:id="@+id/textView17" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:hint="Login"
+            android:id="@+id/editLog"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
             android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:id="@+id/editText11" />
+            android:background="#626970"
+            android:layout_marginTop="85dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Senha"
+            android:id="@+id/editSenha"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#626970"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Repita a senha"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:layout_marginBottom="35dp"
+            android:background="#626970"
+            android:id="@+id/editConfSenha"/>
 
         <Button
             android:layout_width="match_parent"
@@ -73,7 +80,7 @@
             android:id="@+id/button4"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:background="@android:color/holo_blue_light" />
+            android:background="@color/colorPrimary" />
 
         <Button
             android:layout_width="match_parent"
@@ -82,6 +89,6 @@
             android:text="cancelar"
             android:onClick="cancelar"
             android:id="@+id/button5"
-            android:background="@color/design_textinput_error_color_light" />
+            android:background="@color/colorPrimaryDark" />
     </LinearLayout>
 </RelativeLayout>

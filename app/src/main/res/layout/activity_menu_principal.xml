@@ -1,91 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#4c5054"
     tools:context="com.example.ingrid.myapplication.MenuPrincipalActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp">
+        android:id="@+id/toolbar_menu">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_geral"
+            android:elevation="4dp"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_text"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="Grade"/>
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="64dp">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.33"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
             android:text="inserir"
             android:drawableTop="@drawable/inserir"
             android:onClick="inserir"
-
             android:id="@+id/inserir"
-            android:backgroundTint="@color/highlighted_text_material_dark" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.33"
+            android:backgroundTint="@color/colorAccent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="calendario"
-            android:drawableTop="@drawable/calendario"
-            android:onClick="calendario"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/first_but"
+            android:layout_below="@id/inserir">
 
-            android:id="@+id/calendario"
-            android:backgroundTint="@color/highlighted_text_material_dark" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.33"
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:text="calendario"
+                android:drawableTop="@drawable/calendario"
+                android:onClick="calendario"
+                android:id="@+id/calendario"
+                android:layout_below="@id/inserir"
+                android:backgroundTint="@color/colorPrimary" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:text="hoje"
+                android:drawableTop="@drawable/hoje"
+                android:onClick="hoje"
+                android:id="@+id/hoje"
+                android:backgroundTint="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hoje"
-            android:drawableTop="@drawable/hoje"
-            android:onClick="hoje"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/sec_but"
+            android:layout_below="@id/first_but">
 
-            android:id="@+id/hoje"
-            android:backgroundTint="@color/highlighted_text_material_dark" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:text="tudo"
+                android:drawableTop="@drawable/tudo"
+                android:onClick="tudo"
+                android:id="@+id/tudo"
+                android:backgroundTint="@color/colorPrimary" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:text="estatistica"
+                android:drawableTop="@drawable/estatistica"
+                android:onClick="estatistica"
+                android:id="@+id/estatistica"
+                android:backgroundTint="@color/colorPrimary" />
 
+        </LinearLayout>
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.33"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tudo"
-            android:drawableTop="@drawable/tudo"
-            android:onClick="tudo"
-
-            android:id="@+id/tudo"
-            android:backgroundTint="@color/highlighted_text_material_dark" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.33"
-            android:layout_height="wrap_content"
-            android:text="estatistica"
-            android:drawableTop="@drawable/estatistica"
-            android:onClick="estatistica"
-
-            android:id="@+id/estatistica"
-            android:backgroundTint="@color/highlighted_text_material_dark" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="0.33"
-            android:layout_height="wrap_content"
-            android:text="conf"
+            android:layout_below="@id/sec_but"
+            android:text="configurações"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:drawableTop="@drawable/conf"
             android:onClick="conf"
-
             android:id="@+id/conf"
-            android:backgroundTint="@color/highlighted_text_material_dark" />
-
-    </LinearLayout>
+            android:backgroundTint="@color/colorPrimaryDark" />
+    </RelativeLayout>
 </RelativeLayout>
