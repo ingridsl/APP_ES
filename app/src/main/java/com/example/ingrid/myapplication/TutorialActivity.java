@@ -18,7 +18,7 @@ public class TutorialActivity extends AppCompatActivity {
     }
     /** Called when the user clicks the comecar button */
     public void comecar(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
 

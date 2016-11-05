@@ -42,19 +42,19 @@ public class TipoActivity extends SuperTela {
         }
     }
     public void periodica(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, PeriodicoActivity.class);
         startActivity(intent);
 
     }
     public void unica(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, UnicoActivity.class);
         startActivity(intent);
 
     }
     public void recorrente(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, RecorrenteActivity.class);
         startActivity(intent);
 

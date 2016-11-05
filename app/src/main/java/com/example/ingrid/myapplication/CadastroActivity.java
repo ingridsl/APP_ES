@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.ingrid.myapplication.banco.*;
@@ -19,12 +20,13 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         editLogin = (EditText) findViewById(R.id.editLogin);
         editSenha = (EditText) findViewById(R.id.editSenha);
         editConfSenha = (EditText) findViewById(R.id.editConfSenha);
     }
     public void salvar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, MainActivity.class);
 
         //pega dados de login digitados pelo usuário
@@ -44,7 +46,6 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
     public void cancelar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 

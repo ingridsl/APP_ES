@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 
-public class RecorrenteActivity extends AppCompatActivity {
+public class RecorrenteActivity extends SuperTela {
 
     private EditText editNome;
     private EditText editData;
@@ -24,8 +24,8 @@ public class RecorrenteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recorrente);
+        super.onCreate(savedInstanceState);
 
         editNome = (EditText) findViewById(R.id.editNome);
         editData = (EditText) findViewById(R.id.editData);
@@ -33,15 +33,10 @@ public class RecorrenteActivity extends AppCompatActivity {
         editNotas = (EditText) findViewById(R.id.editNotas);
         editHorasPre = (EditText) findViewById(R.id.editHorasPre);
         editItensTot = (EditText) findViewById(R.id.editItensTot);
-
-
-        Intent intent = getIntent();
     }
 
     public void salvar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
-
 
         String Nome = editNome.getText().toString();
         String Data = editData.getText().toString();
@@ -53,24 +48,22 @@ public class RecorrenteActivity extends AppCompatActivity {
         Recorrente recorrente = new Recorrente();
         recorrente.setNome(Nome);
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
-        Date HoraTeste = null;
+        Date HoraTeste;
         try {
-            if (Hora!=null) HoraTeste = formatTime.parse(Hora);
+            HoraTeste = formatTime.parse(Hora);
         } catch (ParseException e){
             HoraTeste = null;
         }
         recorrente.setHoraFinal((java.sql.Time)HoraTeste);
 
         SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Date dataTeste = null;
+        Date dataTeste;
         try {
-            if (Data!=null) dataTeste = formatData.parse(Data);
+            dataTeste = formatData.parse(Data);
         } catch (ParseException e){
             dataTeste = null;
         }
         recorrente.setDataFinal(dataTeste);
-
-
 
         recorrente.setHorasDia(Integer.parseInt(HorasPre));
         recorrente.setTotalItens(Integer.parseInt(ItensTot));
@@ -78,13 +71,11 @@ public class RecorrenteActivity extends AppCompatActivity {
 
         DataBaseHelper.getInstance(this.getApplicationContext()).addRecorrente(recorrente);
         startActivity(intent);
-
     }
 
     public void cancelar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
-
     }
+
 }

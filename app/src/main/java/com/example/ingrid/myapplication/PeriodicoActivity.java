@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.ingrid.myapplication.banco.*;
@@ -13,8 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class PeriodicoActivity extends AppCompatActivity {
-
+public class PeriodicoActivity extends SuperTela {
 
     private EditText editNome;
     private EditText editData;
@@ -24,21 +24,18 @@ public class PeriodicoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_periodico);
-
+        super.onCreate(savedInstanceState);
 
         editNome = (EditText) findViewById(R.id.editNome);
         editData = (EditText) findViewById(R.id.editData);
         editHoraIni = (EditText) findViewById(R.id.editHoraIni);
         editHoraFin = (EditText) findViewById(R.id.editHoraFin);
         editNotas = (EditText) findViewById(R.id.editNotas);
-
-        Intent intent = getIntent();
     }
 
     public void recorrente(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, RecorrenteActivity.class);
 
         String Nome = editNome.getText().toString();
@@ -52,29 +49,30 @@ public class PeriodicoActivity extends AppCompatActivity {
 
 
         SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Date dataTeste = null;
+        Date dataTeste;
         try {
-                if (Data!=null) dataTeste = formatData.parse(Data);
+            dataTeste = formatData.parse(Data);
         } catch (ParseException e){
             dataTeste = null;
         }
-        periodico.setData(dataTeste);
+        //periodico.setData(dataTeste);
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
-        Date HoraInicial = null;
+        Date HoraInicial;
         try {
-            if (HoraIni!=null) HoraInicial = formatTime.parse(HoraIni);
+            HoraInicial = formatTime.parse(HoraIni);
         } catch (ParseException e){
             HoraInicial = null;
         }
         periodico.setHoraInicial((java.sql.Time)HoraInicial);
-        Date HoraFinal = null;
+        Date HoraFinal;
         try {
-            if (HoraFin!=null) HoraFinal = formatTime.parse(HoraFin);
+            HoraFinal = formatTime.parse(HoraFin);
         } catch (ParseException e){
             HoraFinal = null;
         }
-        periodico.setHoraFinal ((java.sql.Time)HoraFinal );
+        periodico.setHoraFinal ((java.sql.Time) HoraFinal);
 
         periodico.setNome(Notas);
 
@@ -85,7 +83,7 @@ public class PeriodicoActivity extends AppCompatActivity {
 
     }
     public void unico(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, UnicoActivity.class);
 
         String Nome = editNome.getText().toString();
@@ -98,7 +96,7 @@ public class PeriodicoActivity extends AppCompatActivity {
     }
 
     public void salvar(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
 
         String Nome = editNome.getText().toString();
@@ -111,7 +109,7 @@ public class PeriodicoActivity extends AppCompatActivity {
     }
 
     public void cancelar(View view) {
-        // Do something in response to button
+
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
 

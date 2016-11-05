@@ -3,6 +3,7 @@ package com.example.ingrid.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.ingrid.myapplication.banco.SuperTela;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BubbleChart;
@@ -21,12 +22,12 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstatisticaActivity extends AppCompatActivity {
+public class EstatisticaActivity extends SuperTela {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estatistica);
+        super.onCreate(savedInstanceState);
 
         //GRÁFICO DE PIZZA
         PieChart pie = (PieChart) findViewById(R.id.piechart);

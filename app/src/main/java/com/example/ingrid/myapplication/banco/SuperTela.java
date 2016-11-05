@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public abstract class SuperTela extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         activity = this;
 
         //CRIANDO O TOOLBAR
@@ -45,11 +48,6 @@ public abstract class SuperTela extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        TextView toolbar_text = (TextView) findViewById(R.id.toolbar_text);
-        if (toolbar_text != null) {
-            toolbar_text.setText(R.string.app_name);
-        }
 
         //Inicializando NavigationView
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);

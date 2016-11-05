@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class UnicoActivity extends AppCompatActivity {
+public class UnicoActivity extends SuperTela {
     private EditText editNome;
     private EditText editData;
     private EditText editHoraIni;
@@ -22,21 +22,17 @@ public class UnicoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unico);
-
+        super.onCreate(savedInstanceState);
 
         editNome = (EditText) findViewById(R.id.editNome);
         editData = (EditText) findViewById(R.id.editData);
         editHoraIni = (EditText) findViewById(R.id.editHoraIni);
         editHoraFin = (EditText) findViewById(R.id.editHoraFin);
         editNotas = (EditText) findViewById(R.id.editNotas);
-
-
-        Intent intent = getIntent();
     }
+
     public void recorrente(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, RecorrenteActivity.class);
         String Nome = editNome.getText().toString();
         String Data = editData.getText().toString();
@@ -47,25 +43,25 @@ public class UnicoActivity extends AppCompatActivity {
         Unico unico = new Unico();
         unico.setNome(Nome);
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
-        Date HoraInicial = null;
+        Date HoraInicial;
         try {
-            if (HoraIni!=null) HoraInicial = formatTime.parse(HoraIni);
+            HoraInicial = formatTime.parse(HoraIni);
         } catch (ParseException e){
             HoraInicial = null;
         }
         unico.setHoraInicial((java.sql.Time)HoraInicial);
-        Date HoraFinal = null;
+        Date HoraFinal;
         try {
-            if (HoraFin!=null) HoraFinal = formatTime.parse(HoraFin);
+            HoraFinal = formatTime.parse(HoraFin);
         } catch (ParseException e){
             HoraFinal = null;
         }
-        unico.setHoraFinal ((java.sql.Time)HoraFinal );
+        unico.setHoraFinal ((java.sql.Time) HoraFinal);
 
         SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Date dataTeste = null;
+        Date dataTeste;
         try {
-            if (Data!=null) dataTeste = formatData.parse(Data);
+            dataTeste = formatData.parse(Data);
         } catch (ParseException e){
             dataTeste = null;
         }
@@ -78,7 +74,6 @@ public class UnicoActivity extends AppCompatActivity {
 
     }
     public void salvar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
         String Nome = editNome.getText().toString();
         String Data = editData.getText().toString();
@@ -89,25 +84,25 @@ public class UnicoActivity extends AppCompatActivity {
         Unico unico = new Unico();
         unico.setNome(Nome);
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
-        Date HoraInicial = null;
+        Date HoraInicial;
         try {
-            if (HoraIni!=null) HoraInicial = formatTime.parse(HoraIni);
+            HoraInicial = formatTime.parse(HoraIni);
         } catch (ParseException e){
             HoraInicial = null;
         }
-        unico.setHoraInicial((java.sql.Time)HoraInicial);
-        Date HoraFinal = null;
+        unico.setHoraInicial((java.sql.Time) HoraInicial);
+        Date HoraFinal;
         try {
-            if (HoraFin!=null) HoraFinal = formatTime.parse(HoraFin);
+            HoraFinal = formatTime.parse(HoraFin);
         } catch (ParseException e){
             HoraFinal = null;
         }
-        unico.setHoraFinal ((java.sql.Time)HoraFinal );
+        unico.setHoraFinal ((java.sql.Time) HoraFinal);
 
         SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Date dataTeste = null;
+        Date dataTeste;
         try {
-            if (Data!=null) dataTeste = formatData.parse(Data);
+            dataTeste = formatData.parse(Data);
         } catch (ParseException e){
             dataTeste = null;
         }
@@ -121,7 +116,6 @@ public class UnicoActivity extends AppCompatActivity {
     }
 
     public void cancelar(View view) {
-        // Do something in response to button
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
 
