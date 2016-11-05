@@ -46,7 +46,7 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:layout_below="@id/toolbar_geral">
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notificações"
@@ -55,10 +55,11 @@
                 android:paddingBottom="24dp"
                 android:paddingLeft="16dp"
                 android:layout_marginBottom="16dp"
+                android:buttonTint="@color/almost_white"
                 android:background="@color/colorAccent"
                 android:layout_gravity="center_horizontal" />
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Vibração"
@@ -67,10 +68,11 @@
                 android:paddingBottom="24dp"
                 android:paddingLeft="16dp"
                 android:layout_marginBottom="16dp"
+                android:buttonTint="@color/almost_white"
                 android:background="@color/colorAccent"
                 android:layout_gravity="center_horizontal" />
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Alarme"
@@ -78,8 +80,10 @@
                 android:paddingTop="24dp"
                 android:paddingBottom="24dp"
                 android:paddingLeft="16dp"
-                android:layout_marginBottom="32dp"
+                android:buttonTint="@color/almost_white"
                 android:background="@color/colorAccent"
+                android:layout_marginBottom="32dp"
+
                 android:layout_gravity="center_horizontal" />
 
             <Button
