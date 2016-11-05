@@ -23,13 +23,13 @@
                 android:id="@+id/nav_hoje"
                 android:checked="false"
                 android:icon="@drawable/hoje"
-                android:title="Hoje" />
+                android:title="Dia atual" />
 
             <item
                 android:id="@+id/nav_tudo"
                 android:checked="false"
                 android:icon="@drawable/tudo"
-                android:title="Tudo" />
+                android:title="Prioridades" />
         </menu>
     </item>
 

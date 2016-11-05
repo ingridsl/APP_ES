@@ -82,10 +82,10 @@
                 android:layout_weight="1"
                 android:paddingTop="50dp"
                 android:paddingBottom="50dp"
-                android:text="hoje"
-                android:drawableTop="@drawable/hoje"
-                android:onClick="hoje"
-                android:id="@+id/hoje"
+                android:text="estatisticas"
+                android:drawableTop="@drawable/estatistica"
+                android:onClick="estatistica"
+                android:id="@+id/estatistica"
                 android:backgroundTint="@color/colorPrimary" />
 
         </LinearLayout>
@@ -102,27 +102,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingTop="50dp"
-                android:paddingBottom="50dp"
-                android:text="tudo"
-                android:drawableTop="@drawable/tudo"
-                android:onClick="tudo"
-                android:id="@+id/tudo"
+                android:paddingTop="40dp"
+                android:paddingBottom="40dp"
+                android:text="Eventos no dia atual"
+                android:drawableTop="@drawable/hoje"
+                android:onClick="hoje"
+                android:id="@+id/hoje"
                 android:backgroundTint="@color/colorPrimary" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingTop="50dp"
-                android:paddingBottom="50dp"
-                android:text="estatistica"
-                android:drawableTop="@drawable/estatistica"
-                android:onClick="estatistica"
-                android:id="@+id/estatistica"
+                android:paddingTop="40dp"
+                android:paddingBottom="40dp"
+                android:text="Eventos por prioridade"
+                android:drawableTop="@drawable/tudo"
+                android:onClick="tudo"
+                android:id="@+id/tudo"
                 android:backgroundTint="@color/colorPrimary" />
 
         </LinearLayout>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

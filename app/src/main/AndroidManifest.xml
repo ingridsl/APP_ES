@@ -53,9 +53,17 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ConfActivity" />
-        <activity android:name=".HojeActivity" />
-        <activity android:name=".TudoActivity" />
+        <activity android:name=".ConfActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".HojeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".TudoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
 
         <activity android:name=".CadastroActivity"
             android:configChanges="orientation"

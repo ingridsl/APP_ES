@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class HojeActivity extends AppCompatActivity {
+import com.example.ingrid.myapplication.banco.SuperTela;
+
+public class HojeActivity extends SuperTela {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoje);
-
-        Intent intent = getIntent();
+        super.onCreate(savedInstanceState);
     }
 }
