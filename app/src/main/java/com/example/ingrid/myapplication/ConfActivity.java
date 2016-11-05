@@ -16,10 +16,12 @@ public class ConfActivity extends SuperTela {
     }
 
     public void salvar(View view) {
+        Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
     }
 
     public void cancelar(View view) {
+        Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
 
     }
