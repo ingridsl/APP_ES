@@ -15,6 +15,7 @@ public class Periodico {
     private String frequencia;
     private int faltas;
     private Usuario userID;
+    private boolean segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
     public int getId() {
         return id;
@@ -103,4 +104,33 @@ public class Periodico {
     public void setUserID(Usuario userID) {
         this.userID = userID;
     }
+
+    public boolean getSegunda() {return segunda;  }
+
+    public void setSegunda(boolean segunda) {this.segunda = segunda; }
+
+    public boolean getTerca() {return terca;  }
+
+    public void setTerca(boolean terca) {this.terca = terca; }
+
+    public boolean getQuarta() {return quarta;  }
+
+    public void setQuarta(boolean quarta) {this.quarta = quarta; }
+
+    public boolean getQuinta() {return quinta;  }
+
+    public void setQuinta(boolean quinta) {this.quinta = quinta; }
+
+    public boolean getSexta() {return sexta;  }
+
+    public void setSexta(boolean sexta) {this.sexta = sexta; }
+
+    public boolean getSabado() {return sabado;  }
+
+    public void setSabado(boolean sabado) {this.sabado= sabado; }
+
+    public boolean getDomingo() {return domingo;  }
+
+    public void setDomingo(boolean domingo) {this.domingo= domingo; }
+
 }

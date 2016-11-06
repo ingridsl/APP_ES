@@ -39,6 +39,79 @@ public class PeriodicoActivity extends SuperTela {
         Intent intent = new Intent(this, RecorrenteActivity.class);
 
         String Nome = editNome.getText().toString();
+        String HoraIni = editHoraIni.getText().toString();
+        String HoraFin = editHoraFin.getText().toString();
+        String Notas = editNotas.getText().toString();
+
+        Periodico periodico = new Periodico();
+        periodico.setNome(Nome);
+
+        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+        Date HoraInicial;
+        try {
+            HoraInicial = formatTime.parse(HoraIni);
+        } catch (ParseException e){
+            HoraInicial = null;
+        }
+        periodico.setHoraInicial((java.sql.Time)HoraInicial);
+        Date HoraFinal;
+        try {
+            HoraFinal = formatTime.parse(HoraFin);
+        } catch (ParseException e){
+            HoraFinal = null;
+        }
+        periodico.setHoraFinal ((java.sql.Time) HoraFinal);
+
+        periodico.setNome(Notas);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addPeriodico(periodico);
+
+
+        startActivity(intent);
+
+    }
+    public void unico(View view) {
+
+        Intent intent = new Intent(this, UnicoActivity.class);
+
+        String Nome = editNome.getText().toString();
+        String Data = editData.getText().toString();
+        String HoraIni = editHoraIni.getText().toString();
+        String HoraFin = editHoraFin.getText().toString();
+        String Notas = editNotas.getText().toString();
+
+        Periodico periodico = new Periodico();
+        periodico.setNome(Nome);
+
+        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+        Date HoraInicial;
+        try {
+            HoraInicial = formatTime.parse(HoraIni);
+        } catch (ParseException e){
+            HoraInicial = null;
+        }
+        periodico.setHoraInicial((java.sql.Time)HoraInicial);
+        Date HoraFinal;
+        try {
+            HoraFinal = formatTime.parse(HoraFin);
+        } catch (ParseException e){
+            HoraFinal = null;
+        }
+        periodico.setHoraFinal ((java.sql.Time) HoraFinal);
+
+        periodico.setNome(Notas);
+
+        DataBaseHelper.getInstance(this.getApplicationContext()).addPeriodico(periodico);
+
+        startActivity(intent);
+
+    }
+
+    public void salvar(View view) {
+
+        Intent intent = new Intent(this, MenuPrincipalActivity.class);
+
+        String Nome = editNome.getText().toString();
         String Data = editData.getText().toString();
         String HoraIni = editHoraIni.getText().toString();
         String HoraFin = editHoraFin.getText().toString();
@@ -78,32 +151,6 @@ public class PeriodicoActivity extends SuperTela {
 
         DataBaseHelper.getInstance(this.getApplicationContext()).addPeriodico(periodico);
 
-
-        startActivity(intent);
-
-    }
-    public void unico(View view) {
-
-        Intent intent = new Intent(this, UnicoActivity.class);
-
-        String Nome = editNome.getText().toString();
-        String Data = editData.getText().toString();
-        String HoraIni = editHoraIni.getText().toString();
-        String HoraFin = editHoraFin.getText().toString();
-        String Notas = editNotas.getText().toString();
-        startActivity(intent);
-
-    }
-
-    public void salvar(View view) {
-
-        Intent intent = new Intent(this, MenuPrincipalActivity.class);
-
-        String Nome = editNome.getText().toString();
-        String Data = editData.getText().toString();
-        String HoraIni = editHoraIni.getText().toString();
-        String HoraFin = editHoraFin.getText().toString();
-        String Notas = editNotas.getText().toString();
         startActivity(intent);
 
     }

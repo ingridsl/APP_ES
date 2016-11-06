@@ -389,9 +389,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     newRecorrente.setTotalItens(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_TOTAL_ITENS)));
                     newRecorrente.setItensFeitos (cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_ITENS_FEITOS)));
                     newRecorrente.setHorasDia(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_HORAS_DIA)));
-                    newRecorrente.setPrioridade(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_PRIORIDADE));
-                    newRecorrente.setFaltas(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_FALTAS))));
-                    newRecorrente.setDataFinal(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_DATA_FINAL)));
+                    newRecorrente.setPrioridade(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_PRIORIDADE)));
+                    newRecorrente.setFaltas(cursor.getInt (cursor.getColumnIndex(KEY_RECORRENTE_FALTAS)));
+
+                    SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date dataTeste;
+                    try {
+                        dataTeste = formatData.parse(cursor.getString(cursor.getColumnIndex(KEY_RECORRENTE_DATA_FINAL)));
+                    } catch (ParseException e){
+                        dataTeste = null;
+                    }
+                    newRecorrente.setDataFinal(dataTeste);
                     newRecorrente.setUserID(newUser);
                     recorrentes.add(newRecorrente);
                 } while(cursor.moveToNext());
