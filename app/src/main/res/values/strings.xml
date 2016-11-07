@@ -9,14 +9,14 @@
     <![CDATA[<b><i>• Periodica:</i></b>]]> São aquelas atividades de horário previamente definido que acontecem periodicamente, como uma aula.&lt;br /&gt; &lt;br /&gt;
     <![CDATA[<b><i>• Unica:</i></b>]]> São aquelas atividades que acontecem apenas uma única vez, como uma ida ao cinema.&lt;br /&gt; &lt;br /&gt;
         <![CDATA[<b><i>• Recorrente:</i></b>]]> São aquelas atividades que acontecem mais de uma vez em horários que não são fixos, como o estudo para uma matéria .&lt;br /&gt; &lt;br /&gt;
-    Para cada atividade que você colocar, você pode relacionar outra atividade. Assim, quando a atividade principal for deletada, a relacionada também será <![CDATA[<b><i>estatísticas</i></b>]]> de prevenção.
+    Para cada atividade que você colocar, você pode relacionar outra atividade. Assim, quando a atividade principal for deletada, a relacionada também será.
         O aplicativo irá te ajudar a encontrar o melhor lugar para colocar sua atividade <![CDATA[<b><i>recorrente</i></b>]]> que não tem horário fixo </string>
     <string name="tipo_tip">Bem vindo!&lt;br /&gt;
     Você pode ajustar sua grade horária usando as opções aqui existentes.:&lt;br /&gt; &lt;br /&gt;
     <![CDATA[<b><i>• Periodica:</i></b>]]> São aquelas atividades de horário previamente definido que acontecem periodicamente, como uma aula.&lt;br /&gt; &lt;br /&gt;
     <![CDATA[<b><i>• Unica:</i></b>]]> São aquelas atividades que acontecem apenas uma única vez, como uma ida ao cinema.&lt;br /&gt; &lt;br /&gt;
         <![CDATA[<b><i>• Recorrente:</i></b>]]> São aquelas atividades que acontecem mais de uma vez em horários que não são fixos, como o estudo para uma matéria .&lt;br /&gt; &lt;br /&gt;
-    Para cada atividade que você colocar, você pode relacionar outra atividade. Assim, quando a atividade principal for deletada, a relacionada também será <![CDATA[<b><i>estatísticas</i></b>]]> de prevenção.
+    Para cada atividade que você colocar, você pode relacionar outra atividade. Assim, quando a atividade principal for deletada, a relacionada também será.
         O aplicativo irá te ajudar a encontrar o melhor lugar para colocar sua atividade <![CDATA[<b><i>recorrente</i></b>]]> que não tem horário fixo </string>
     <string name="frequencia">Frequencia</string>
     <string name="ok">Ok</string>
