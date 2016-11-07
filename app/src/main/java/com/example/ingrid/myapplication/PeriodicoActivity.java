@@ -31,7 +31,7 @@ public class PeriodicoActivity extends SuperTela {
     private EditText editHoraFin;
     private EditText editNotas;
     private TextView textFrequencia;
-    public boolean segunda, terca, quarta, quinta, sexta, sabado, domingo;
+    public int segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,45 +84,45 @@ public class PeriodicoActivity extends SuperTela {
                                     // User clicked OK, so save the mSelectedItems results somewhere
                                     // or return them to the component that opened the dialog
                                     if(mSelectedItems.contains(0)){
-                                        segunda = true;
+                                        segunda = 1;
                                     }else{
-                                        segunda = false;
+                                        segunda = 0;
                                     }
 
                                     if(mSelectedItems.contains(1)){
-                                        terca = true;
+                                        terca = 1;
                                     }else{
-                                        terca = false;
+                                        terca = 0;
                                     }
 
                                     if(mSelectedItems.contains(2)){
-                                        quarta = true;
+                                        quarta = 1;
                                     }else{
-                                        quarta = false;
+                                        quarta = 0;
                                     }
 
                                     if(mSelectedItems.contains(3)){
-                                        quinta = true;
+                                        quinta = 1;
                                     }else{
-                                        quinta = false;
+                                        quinta = 0;
                                     }
 
                                     if(mSelectedItems.contains(4)){
-                                        sexta = true;
+                                        sexta = 1;
                                     }else{
-                                        sexta = false;
+                                        sexta = 0;
                                     }
 
                                     if(mSelectedItems.contains(5)){
-                                        sabado = true;
+                                        sabado = 1;
                                     }else{
-                                        sabado = false;
+                                        sabado = 0;
                                     }
 
                                     if(mSelectedItems.contains(6)){
-                                        domingo = true;
+                                        domingo = 1;
                                     }else{
-                                        domingo = false;
+                                        domingo = 0;
                                     }
 
 

@@ -15,7 +15,7 @@ public class Periodico {
     private String frequencia;
     private int faltas;
     private Usuario userID;
-    private boolean segunda, terca, quarta, quinta, sexta, sabado, domingo;
+    private int segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
     public int getId() {
         return id;
@@ -105,32 +105,32 @@ public class Periodico {
         this.userID = userID;
     }
 
-    public boolean getSegunda() {return segunda;  }
+    public int getSegunda() {return segunda;  }
 
-    public void setSegunda(boolean segunda) {this.segunda = segunda; }
+    public void setSegunda(int segunda) {this.segunda = segunda; }
 
-    public boolean getTerca() {return terca;  }
+    public int getTerca() {return terca;  }
 
-    public void setTerca(boolean terca) {this.terca = terca; }
+    public void setTerca(int terca) {this.terca = terca; }
 
-    public boolean getQuarta() {return quarta;  }
+    public int getQuarta() {return quarta;  }
 
-    public void setQuarta(boolean quarta) {this.quarta = quarta; }
+    public void setQuarta(int quarta) {this.quarta = quarta; }
 
-    public boolean getQuinta() {return quinta;  }
+    public int getQuinta() {return quinta;  }
 
-    public void setQuinta(boolean quinta) {this.quinta = quinta; }
+    public void setQuinta(int quinta) {this.quinta = quinta; }
 
-    public boolean getSexta() {return sexta;  }
+    public int getSexta() {return sexta;  }
 
-    public void setSexta(boolean sexta) {this.sexta = sexta; }
+    public void setSexta(int sexta) {this.sexta = sexta; }
 
-    public boolean getSabado() {return sabado;  }
+    public int getSabado() {return sabado;  }
 
-    public void setSabado(boolean sabado) {this.sabado= sabado; }
+    public void setSabado(int sabado) {this.sabado= sabado; }
 
-    public boolean getDomingo() {return domingo;  }
+    public int getDomingo() {return domingo;  }
 
-    public void setDomingo(boolean domingo) {this.domingo= domingo; }
+    public void setDomingo (int domingo) {this.domingo= domingo; }
 
 }

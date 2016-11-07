@@ -77,6 +77,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         private static final String KEY_PERIODICO_FREQUENCIA ="frequencia";
         private static final String KEY_PERIODICO_FALTAS ="faltas";
         private static final String KEY_PERIODICO_USER_ID_FK = "usuarioID";
+        private static final String KEY_PERIODICO_SEGUNDA = "segunda";
+        private static final String KEY_PERIODICO_TERCA = "terca";
+        private static final String KEY_PERIODICO_QUARTA = "quarta";
+        private static final String KEY_PERIODICO_QUINTA = "quinta";
+        private static final String KEY_PERIODICO_SEXTA = "sexta";
+        private static final String KEY_PERIODICO_SABADO= "sabado";
+        private static final String KEY_PERIODICO_DOMINGO = "domingo";
 
 
     public static synchronized DataBaseHelper getInstance(Context ctx) {
@@ -145,6 +152,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 KEY_PERIODICO_PRIORIDADE + "INTEGER" +
                 KEY_PERIODICO_FREQUENCIA + "TEXT" +
                 KEY_PERIODICO_FALTAS + "INTEGER" +
+                KEY_PERIODICO_SEGUNDA + "INTEGER" +
+                KEY_PERIODICO_TERCA + "INTEGER" +
+                KEY_PERIODICO_QUARTA + "INTEGER" +
+                KEY_PERIODICO_QUINTA + "INTEGER" +
+                KEY_PERIODICO_SEXTA + "INTEGER" +
+                KEY_PERIODICO_SABADO + "INTEGER" +
+                KEY_PERIODICO_DOMINGO + "INTEGER" +
                 KEY_PERIODICO_USER_ID_FK  + "INTEGER REFERENCES" + TABLE_USUARIO + "," +
                 ")";
         db.execSQL(CREATE_TABLE_PERIODICO);
@@ -289,7 +303,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PERIODICO_REPETICAO, periodico.getRepeticao());
             values.put(KEY_PERIODICO_FREQUENCIA, periodico.getFrequencia());
             values.put(KEY_PERIODICO_FALTAS, periodico.getFaltas());
-            //!!!!!values.put(KEY_RECORRENTE_USER_ID_FK, userId);
+            values.put(KEY_PERIODICO_SEGUNDA, periodico.getSegunda());
+            values.put(KEY_PERIODICO_TERCA, periodico.getTerca());
+            values.put(KEY_PERIODICO_QUARTA, periodico.getQuarta());
+            values.put(KEY_PERIODICO_QUINTA, periodico.getQuinta());
+            values.put(KEY_PERIODICO_SEXTA, periodico.getSexta());
+            values.put(KEY_PERIODICO_SABADO, periodico.getSabado());
+            values.put(KEY_PERIODICO_DOMINGO, periodico.getDomingo());
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
             db.insertOrThrow(TABLE_PERIODICO, null, values);
@@ -543,6 +563,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     newPeriodico.setRepeticao(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_REPETICAO)));
                     newPeriodico.setFrequencia(cursor.getString (cursor.getColumnIndex(KEY_PERIODICO_FREQUENCIA)));
                     newPeriodico.setFaltas(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_FALTAS)));
+                    newPeriodico.setSegunda(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_SEGUNDA)));
+                    newPeriodico.setTerca(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_TERCA)));
+                    newPeriodico.setQuarta(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_QUARTA)));
+                    newPeriodico.setQuinta(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_QUINTA)));
+                    newPeriodico.setSexta(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_SEXTA)));
+                    newPeriodico.setSabado(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_SABADO)));
+                    newPeriodico.setDomingo(cursor.getInt(cursor.getColumnIndex(KEY_PERIODICO_DOMINGO)));
                     newPeriodico.setUserID(newUser);
                     periodicos.add(newPeriodico);
 
