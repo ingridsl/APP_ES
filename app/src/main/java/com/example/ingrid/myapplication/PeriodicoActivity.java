@@ -32,7 +32,6 @@ import it.sephiroth.android.library.tooltip.Tooltip;
 public class PeriodicoActivity extends SuperTela {
 
     private EditText editNome;
-    private EditText editData;
     private EditText editHoraIni;
     private EditText editHoraFin;
     private EditText editNotas;
@@ -47,7 +46,6 @@ public class PeriodicoActivity extends SuperTela {
         super.onCreate(savedInstanceState);
 
         editNome = (EditText) findViewById(R.id.editNome);
-        editData = (EditText) findViewById(R.id.editData);
         editHoraIni = (EditText) findViewById(R.id.editHoraIni);
         editHoraFin = (EditText) findViewById(R.id.editHoraFin);
         editNotas = (EditText) findViewById(R.id.editNotas);
@@ -287,7 +285,6 @@ public class PeriodicoActivity extends SuperTela {
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
 
         String Nome = editNome.getText().toString();
-        String Data = editData.getText().toString();
         String HoraIni = editHoraIni.getText().toString();
         String HoraFin = editHoraFin.getText().toString();
         String Notas = editNotas.getText().toString();
@@ -296,15 +293,6 @@ public class PeriodicoActivity extends SuperTela {
         periodico.setNome(Nome);
 
 
-        SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        Date dataTeste;
-        try {
-            dataTeste = formatData.parse(Data);
-        } catch (ParseException e){
-            dataTeste = null;
-        }
-        //periodico.setData(dataTeste);
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
         Date HoraInicial;
