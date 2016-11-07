@@ -1,7 +1,9 @@
 package com.example.ingrid.myapplication;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +12,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.example.ingrid.myapplication.banco.*;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -31,6 +37,8 @@ public class PeriodicoActivity extends SuperTela {
     private EditText editHoraFin;
     private EditText editNotas;
     private TextView textFrequencia;
+    private TimePickerDialog horaIni_Dialog, horaFin_Dialog;
+    private Time horaIniPicker, horaFinPicker;
     public int segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
     @Override
@@ -44,6 +52,52 @@ public class PeriodicoActivity extends SuperTela {
         editHoraFin = (EditText) findViewById(R.id.editHoraFin);
         editNotas = (EditText) findViewById(R.id.editNotas);
         textFrequencia = (TextView) findViewById(R.id.textFrequencia);
+
+        Calendar data_atual = Calendar.getInstance();
+        int hour = data_atual.get(Calendar.HOUR_OF_DAY);
+        int minute = data_atual.get(Calendar.MINUTE);
+
+        horaIni_Dialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                horaIniPicker =  new Time(selectedHour, selectedMinute, 0);
+
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+                editHoraIni.setText(format.format(horaIniPicker));
+            }
+
+        }, hour, minute, true);
+
+        editHoraIni.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horaIni_Dialog.show();
+                horaIni_Dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(getResources().getColor(R.color.material_blue_500));
+                horaIni_Dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.material_blue_500));
+                horaIni_Dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.material_blue_500));
+            }
+        });
+
+        horaFin_Dialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                horaFinPicker =  new Time(selectedHour, selectedMinute, 0);
+
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH);
+                editHoraFin.setText(format.format(horaFinPicker));
+            }
+
+        }, hour, minute, true);
+
+        editHoraFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                horaFin_Dialog.show();
+                horaFin_Dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(getResources().getColor(R.color.material_blue_500));
+                horaFin_Dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.material_blue_500));
+                horaFin_Dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.material_blue_500));
+            }
+        });
 
         if(textFrequencia != null){
             textFrequencia.setOnClickListener( new View.OnClickListener()  {
