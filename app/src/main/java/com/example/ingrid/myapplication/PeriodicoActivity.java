@@ -269,6 +269,13 @@ public class PeriodicoActivity extends SuperTela {
         periodico.setHoraFinal ((java.sql.Time) HoraFinal);
 
         periodico.setNome(Notas);
+        periodico.setSegunda(segunda);
+        periodico.setTerca(terca);
+        periodico.setQuarta(quarta);
+        periodico.setQuinta(quinta);
+        periodico.setSexta(sexta);
+        periodico.setSabado(sabado);
+        periodico.setDomingo(domingo);
 
         DataBaseHelper.getInstance(this.getApplicationContext()).addPeriodico(periodico);
 
