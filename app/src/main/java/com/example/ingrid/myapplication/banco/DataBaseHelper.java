@@ -23,7 +23,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Database Info
         private static final String TAG = SQLiteDatabase.class.getSimpleName();
         private static DataBaseHelper mInstance = null;
-        private Context mCxt;
 
         private static final String DATABASE_NAME = "gerTemp";
         private static final int DATABASE_VERSION = 1;
@@ -86,80 +85,79 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         private static final String KEY_PERIODICO_DOMINGO = "domingo";
 
 
-    public static synchronized DataBaseHelper getInstance(Context ctx) {
+    public static synchronized DataBaseHelper getInstance(Context context) {
         if (mInstance == null) {
-            mInstance = new DataBaseHelper(ctx.getApplicationContext());
+            mInstance = new DataBaseHelper(context);
         }
         return mInstance;
     }
 
     private DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.mCxt = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE_USUARIO = "CREATE TABLE " + TABLE_USUARIO +
+        String CREATE_TABLE_USUARIO = "CREATE TABLE IF NOT EXISTS " + TABLE_USUARIO +
                 "(" +
-                KEY_USER_ID + " INTEGER PRIMARY KEY," +
-                KEY_LOGIN + " TEXT" +
-                KEY_SENHA + "TEXT" +
+                KEY_USER_ID + " INTEGER PRIMARY KEY, " +
+                KEY_LOGIN + " TEXT " +
+                KEY_SENHA + " TEXT " +
                 ")";
         db.execSQL(CREATE_TABLE_USUARIO);
 
-        String CREATE_TABLE_RECORRENTE = "CREATE TABLE " + TABLE_RECORRENTE +
+        String CREATE_TABLE_RECORRENTE = "CREATE TABLE IF NOT EXISTS " + TABLE_RECORRENTE +
                 "(" +
                 KEY_RECORRENTE_ID + " INTEGER PRIMARY KEY," +
-                KEY_RECORRENTE_NOME + " TEXT" +
-                KEY_RECORRENTE_ANOTACAO + " TEXT" +
-                KEY_RECORRENTE_HORA_FINAL + "TIME" +
-                KEY_RECORRENTE_PROGRESSAO + "FLOAT" +
-                KEY_RECORRENTE_ITENS_FEITOS + "INTEGER" +
-                KEY_RECORRENTE_TOTAL_ITENS + "INTEGER" +
-                KEY_RECORRENTE_HORAS_DIA + "INTEGER" +
-                KEY_RECORRENTE_DATA_FINAL + "DATE" +
-                KEY_RECORRENTE_PRIORIDADE + "INTEGER" +
-                KEY_RECORRENTE_USER_ID_FK + "INTEGER REFERENCES" + TABLE_USUARIO + "," +
-                KEY_RECORRENTE_FALTAS + "INTEGER" +
-                KEY_RECORRENTE_LOCAL + " TEXT" +
+                KEY_RECORRENTE_NOME + " TEXT " +
+                KEY_RECORRENTE_ANOTACAO + " TEXT " +
+                KEY_RECORRENTE_HORA_FINAL + "  TIME " +
+                KEY_RECORRENTE_PROGRESSAO + "FLOAT " +
+                KEY_RECORRENTE_ITENS_FEITOS + " INTEGER " +
+                KEY_RECORRENTE_TOTAL_ITENS + " INTEGER " +
+                KEY_RECORRENTE_HORAS_DIA + " INTEGER " +
+                KEY_RECORRENTE_DATA_FINAL + " DATE " +
+                KEY_RECORRENTE_PRIORIDADE + " INTEGER " +
+                KEY_RECORRENTE_USER_ID_FK + " INTEGER REFERENCES " + TABLE_USUARIO + "," +
+                KEY_RECORRENTE_FALTAS + " INTEGER " +
+                KEY_RECORRENTE_LOCAL + " TEXT " +
                 ")";
         db.execSQL(CREATE_TABLE_RECORRENTE);
 
-        String CREATE_TABLE_UNICO = "CREATE TABLE " + TABLE_RECORRENTE +
+        String CREATE_TABLE_UNICO = "CREATE TABLE IF NOT EXISTS " + TABLE_RECORRENTE +
                 "(" +
-                KEY_UNICO_ID + " INTEGER PRIMARY KEY," +
-                KEY_UNICO_NOME + " TEXT" +
-                KEY_UNICO_ANOTACAO + " TEXT" +
-                KEY_UNICO_HORA_FINAL + "TIMESTAMP" +
-                KEY_UNICO_HORA_INICIAL + "TIMESTAMP" +
-                KEY_UNICO_DATA  + "DATE" +
-                KEY_UNICO_LOCAL + "TEXT" +
-                KEY_UNICO_PRIORIDADE + "INTEGER" +
-                KEY_UNICO_USER_ID_FK  + "INTEGER REFERENCES" + TABLE_USUARIO + "," +
+                KEY_UNICO_ID + " INTEGER PRIMARY KEY, " +
+                KEY_UNICO_NOME + " TEXT " +
+                KEY_UNICO_ANOTACAO + " TEXT " +
+                KEY_UNICO_HORA_FINAL + " TIMESTAMP " +
+                KEY_UNICO_HORA_INICIAL + " TIMESTAMP " +
+                KEY_UNICO_DATA  + " DATE " +
+                KEY_UNICO_LOCAL + " TEXT " +
+                KEY_UNICO_PRIORIDADE + " INTEGER " +
+                KEY_UNICO_USER_ID_FK  + " INTEGER  REFERENCES " + TABLE_USUARIO + "," +
                 ")";
         db.execSQL(CREATE_TABLE_UNICO);
 
-        String CREATE_TABLE_PERIODICO = "CREATE TABLE " + TABLE_RECORRENTE +
+        String CREATE_TABLE_PERIODICO = "CREATE TABLE IF NOT EXISTS " + TABLE_RECORRENTE +
                 "(" +
-                KEY_PERIODICO_ID + " INTEGER PRIMARY KEY," +
-                KEY_PERIODICO_NOME + " TEXT" +
-                KEY_PERIODICO_ANOTACAO + " TEXT" +
-                KEY_PERIODICO_HORA_FINAL  + "TIMESTAMP" +
-                KEY_PERIODICO_HORA_INICIAL + "TIMESTAMP" +
-                KEY_PERIODICO_REPETICAO  + "INTEGER" +
-                KEY_PERIODICO_LOCAL + "TEXT" +
-                KEY_PERIODICO_PRIORIDADE + "INTEGER" +
-                KEY_PERIODICO_FREQUENCIA + "TEXT" +
-                KEY_PERIODICO_FALTAS + "INTEGER" +
-                KEY_PERIODICO_SEGUNDA + "INTEGER" +
-                KEY_PERIODICO_TERCA + "INTEGER" +
-                KEY_PERIODICO_QUARTA + "INTEGER" +
-                KEY_PERIODICO_QUINTA + "INTEGER" +
-                KEY_PERIODICO_SEXTA + "INTEGER" +
-                KEY_PERIODICO_SABADO + "INTEGER" +
-                KEY_PERIODICO_DOMINGO + "INTEGER" +
-                KEY_PERIODICO_USER_ID_FK  + "INTEGER REFERENCES" + TABLE_USUARIO + "," +
+                KEY_PERIODICO_ID + " INTEGER PRIMARY KEY, " +
+                KEY_PERIODICO_NOME + " TEXT " +
+                KEY_PERIODICO_ANOTACAO + " TEXT " +
+                KEY_PERIODICO_HORA_FINAL  + " TIMESTAMP " +
+                KEY_PERIODICO_HORA_INICIAL + " TIMESTAMP " +
+                KEY_PERIODICO_REPETICAO  + " INTEGER " +
+                KEY_PERIODICO_LOCAL + " TEXT " +
+                KEY_PERIODICO_PRIORIDADE + " INTEGER " +
+                KEY_PERIODICO_FREQUENCIA + " TEXT " +
+                KEY_PERIODICO_FALTAS + " INTEGER " +
+                KEY_PERIODICO_SEGUNDA + " INTEGER " +
+                KEY_PERIODICO_TERCA + " INTEGER " +
+                KEY_PERIODICO_QUARTA + " INTEGER " +
+                KEY_PERIODICO_QUINTA + " INTEGER " +
+                KEY_PERIODICO_SEXTA + " INTEGER " +
+                KEY_PERIODICO_SABADO + " INTEGER " +
+                KEY_PERIODICO_DOMINGO + " INTEGER " +
+                KEY_PERIODICO_USER_ID_FK  + " INTEGER  REFERENCES " + TABLE_USUARIO + "," +
                 ")";
         db.execSQL(CREATE_TABLE_PERIODICO);
     }
@@ -239,7 +237,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
     //Inserir evento na tabela Unico
     public void addUnico(Unico unico) {
         // Create and/or open the database for writing
@@ -274,10 +271,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
-
-
-
-
 
     //Inserir evento na tabela Periodico
     public void addPeriodico(Periodico periodico) {
@@ -556,8 +549,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                         HoraInicial = null;
                     }
                     newPeriodico.setHoraInicial ((java.sql.Time)HoraInicial);
-
-
 
                     newPeriodico.setPrioridade(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_PRIORIDADE)));
                     newPeriodico.setRepeticao(cursor.getInt (cursor.getColumnIndex(KEY_PERIODICO_REPETICAO)));
