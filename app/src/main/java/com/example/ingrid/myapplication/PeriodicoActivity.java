@@ -1,18 +1,26 @@
 package com.example.ingrid.myapplication;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.ingrid.myapplication.banco.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+
+import it.sephiroth.android.library.tooltip.Tooltip;
 
 public class PeriodicoActivity extends SuperTela {
 
@@ -21,6 +29,7 @@ public class PeriodicoActivity extends SuperTela {
     private EditText editHoraIni;
     private EditText editHoraFin;
     private EditText editNotas;
+    private TextView textFrequencia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,52 @@ public class PeriodicoActivity extends SuperTela {
         editHoraIni = (EditText) findViewById(R.id.editHoraIni);
         editHoraFin = (EditText) findViewById(R.id.editHoraFin);
         editNotas = (EditText) findViewById(R.id.editNotas);
+
+        textFrequencia = (TextView) findViewById(R.id.textFrequencia);
+
+        if(textFrequencia != null){
+            textFrequencia.setOnClickListener( new View.OnClickListener()  {
+                @Override
+                public Dialog onCreateDialog(Bundle savedInstanceState) {
+                    final ArrayList mSelectedItems = new ArrayList();  // Where we track the selected items
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    // Set the dialog title
+                    builder.setTitle(R.string.frequencia)
+                            // Specify the list array, the items to be selected by default (null for none),
+                            // and the listener through which to receive callbacks when items are selected
+                            .setMultiChoiceItems(R.array.week_days, null,
+                                    new DialogInterface.OnMultiChoiceClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which,
+                                                            boolean isChecked) {
+                                            if (isChecked) {
+                                                // If the user checked the item, add it to the selected items
+                                                mSelectedItems.add(which);
+                                            } else if (mSelectedItems.contains(which)) {
+                                                // Else, if the item is already in the array, remove it
+                                                mSelectedItems.remove(Integer.valueOf(which));
+                                            }
+                                        }
+                                    })
+                            // Set the action buttons
+                            .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User clicked OK, so save the mSelectedItems results somewhere
+                                    // or return them to the component that opened the dialog
+                                }
+                            })
+                            .setPositiveButton(R.string.cancelar, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+
+                    return builder.create();
+                }
+            });
+        }
     }
 
     public void recorrente(View view) {
@@ -75,7 +130,7 @@ public class PeriodicoActivity extends SuperTela {
         Intent intent = new Intent(this, UnicoActivity.class);
 
         String Nome = editNome.getText().toString();
-        String Data = editData.getText().toString();
+       // String Data = editData.getText().toString();
         String HoraIni = editHoraIni.getText().toString();
         String HoraFin = editHoraFin.getText().toString();
         String Notas = editNotas.getText().toString();
@@ -161,4 +216,5 @@ public class PeriodicoActivity extends SuperTela {
         startActivity(intent);
 
     }
+
 }
