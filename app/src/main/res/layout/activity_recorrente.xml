@@ -109,7 +109,7 @@
                     android:paddingRight="16dp"
                     android:focusableInTouchMode="true"
                     android:textColorHint="@color/almost_white"
-                    android:textColor="@color/white"
+                    android:textColor="@color/dark_gray"
                     android:layout_below="@id/editHora"/>
 
                 <EditText

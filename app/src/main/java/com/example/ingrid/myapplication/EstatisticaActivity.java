@@ -34,17 +34,17 @@ public class EstatisticaActivity extends SuperTela {
 
         List<PieEntry> pieEntries = new ArrayList<>();
 
-        pieEntries.add(new PieEntry(40f, "Verde"));
-        pieEntries.add(new PieEntry(26.7f, "Amarelo"));
-        pieEntries.add(new PieEntry(24.0f, "Laranja"));
-        pieEntries.add(new PieEntry(30.8f, "Azul"));
-        pieEntries.add(new PieEntry(20.8f, "Vermelho"));
+        pieEntries.add(new PieEntry(40f, "Engenharia de Software"));
+        pieEntries.add(new PieEntry(26.7f, "Teleinformática e Redes"));
+        pieEntries.add(new PieEntry(24.0f, "Software Básico"));
+        pieEntries.add(new PieEntry(30.8f, "Circuitos Elétricos"));
+        pieEntries.add(new PieEntry(20.8f, "Francês"));
 
-        PieDataSet pieSet = new PieDataSet(pieEntries, "Top 5 Ocorrências");
+        PieDataSet pieSet = new PieDataSet(pieEntries, "Prioridades de estudo");
         pieSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
         PieData Pdata = new PieData(pieSet);
-        pie.setDescription("Top 5 Ocorrências");
         pie.setData(Pdata);
+        pie.setDescription(" ");
         pie.animateY(3000, Easing.EasingOption.EaseInCirc);
         pie.animateX(3000, Easing.EasingOption.EaseInCirc);
         pie.invalidate(); // refresh*/
@@ -53,42 +53,23 @@ public class EstatisticaActivity extends SuperTela {
         BarChart bar = (BarChart) findViewById(R.id.barchart);
 
         List<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(6f, 10f));
-        barEntries.add(new BarEntry(8f, 20f));
-        barEntries.add(new BarEntry(10f, 25f));
-        barEntries.add(new BarEntry(12f, 50f));
-        barEntries.add(new BarEntry(14f, 58f));
-        barEntries.add(new BarEntry(16f, 60f));
-        barEntries.add(new BarEntry(18f, 55f));
-        barEntries.add(new BarEntry(20f, 25f));
-        barEntries.add(new BarEntry(22f, 30f));
-        barEntries.add(new BarEntry(24f, 10f));
+        barEntries.add(new BarEntry(1f, 20f));
+        barEntries.add(new BarEntry(2f, 25f));
+        barEntries.add(new BarEntry(3f, 50f));
+        barEntries.add(new BarEntry(4f, 45f));
+        barEntries.add(new BarEntry(5f, 55f));
+        barEntries.add(new BarEntry(6f, 40f));
+        barEntries.add(new BarEntry(7f, 25f));
 
-        BarDataSet barSet = new BarDataSet(barEntries, "BarDataSet");
+        BarDataSet barSet = new BarDataSet(barEntries, "Horas diárias de estudo");
         barSet.setColors(ColorTemplate.LIBERTY_COLORS);
         BarData bardata = new BarData(barSet);
         bardata.setBarWidth(0.9f); // set custom bar width
+        bar.setDescription(" ");
         bar.setData(bardata);
-        bar.setFitBars(true); // make the x-axis fit exactly all bars
-        bar.setDescription("Número de ocorrências ao longo do dia no último semestre");
+        bar.setFitBars(true);
         bar.animateY(3000, Easing.EasingOption.EaseInBack);
         bar.invalidate(); // refresh
 
-        //GRÁFICO DE BOLHAS
-        BubbleChart bubble = (BubbleChart) findViewById(R.id.bubblechart);
-
-        List<BubbleEntry> bubbleEntries = new ArrayList<>();
-        bubbleEntries.add(new BubbleEntry(0, 1, 10));
-        bubbleEntries.add(new BubbleEntry(1, 2, 12));
-        bubbleEntries.add(new BubbleEntry(2, 1, 15));
-        bubbleEntries.add(new BubbleEntry(3, 0, 10));
-
-        BubbleDataSet bubbleSet = new BubbleDataSet(bubbleEntries, "BubbleDataSet");
-        bubbleSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        BubbleData bubbledata = new BubbleData(bubbleSet);
-        bubble.setData(bubbledata);
-        bubble.setDescription("Mais Ocorrências");
-        bubble.animateY(3000, Easing.EasingOption.EaseInBack);
-        bubble.invalidate(); // refresh
     }
 }

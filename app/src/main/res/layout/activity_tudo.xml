@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Eventos Únicos"
-                android:id="@+id/textUnico" />
+                android:id="@+id/textUnico"
+                android:textColor="@color/colorPrimary"/>
 
             <ListView
                 android:layout_width="match_parent"
@@ -66,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Eventos Recorrentes"
-                android:id="@+id/textRec" />
+                android:id="@+id/textRec"
+                android:textColor="@color/colorPrimary"/>
 
             <ListView
                 android:layout_width="match_parent"
@@ -81,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Eventos Periódicos"
-                android:id="@+id/textPer" />
+                android:id="@+id/textPer"
+                android:textColor="@color/colorPrimary"/>
 
             <ListView
                 android:layout_width="match_parent"
